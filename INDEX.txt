@@ -1,0 +1,101 @@
+paper_methods/ — claim ↔ script ↔ output
+
+Indexed against paper_rewrite_v15.md.pdf. Copies snapshot 2026-05-27.
+Execute from canonical locations:
+  cd ../phase2_code  && python run_runnable_phase2.py
+  cd ../figures_code && python generate_figs.py
+Outputs: phase2_outputs/{tables,figures}/, figure_outputs/.
+
+
+SECTION MAP
+-----------
+§4  sec04_network_repr/        data_io.py                                       (loader)
+§5  sec05_network_analysis/    data_io.py, null_models.py                       (utilities)
+§6  sec06_dominance_methods/   p2_11_dominance.py                               p2_11_davids_*, p2_11_bt_*
+§7  sec07_density/             p2_7_proximity_sensitivity.py                    p2_7_proximity_sensitivity.csv
+§8  sec08_overlap_null/        p2_4_jaccard_null.py, p2_5_scc_null.py           p2_4_*.csv/png, p2_5_*.csv/png
+§9  sec09_topology/            p2_7_proximity_sensitivity.py, p2_10_directionality.py
+                                                                                p2_7_*.csv, p2_10_*.csv, p2_7_proximity_density.png
+§10 sec10_strain_strategy/     p2_7_proximity_sensitivity.py, generate_figs.py  figure3_*.png/svg
+§11 sec11_pca_gmm/             p2_3_pca12.py, p2_2_gmm.py, generate_figs.py     p2_3_*.csv, p2_2_*.csv, figs, figure4_*
+§12 sec12_dominance_results/   p2_11_dominance.py                               p2_11_*.csv, p2_11_dominance.png
+§13 sec13_spatial/             p2_9_spatial_decomposition.py                    (skips w/o per-config data)
+§14 sec14_robustness/          p2_7, p2_2, p2_3, p2_4                           columns inside §8/§11 CSVs
+h3  h3_pgls/                   p2_8_phylogeny_pgls.py                           (skips w/o tree.nwk)
+-   supplement_only/           p2_12_metabolism.py, recreate_nature_legacy_figs.py
+
+
+CLAIM ↔ NUMBER ↔ OUTPUT
+-----------------------
+
+§2 abstract / §8 (Jaccard null, 10k draws, BY-FDR):
+  mean J = 0.047                                                                p2_4_jaccard_null.csv, mean(J_obs)
+  CCAM/CCVM confound: J=0.336, z=+16.2, p_BY=0.005                              p2_4_jaccard_null.csv, that row
+  8 over (p_BY<0.05): IRAC/RAC(+9.2), CCVM/CMP(+8.2), CCAM/CMP(+7.7),
+                     CCVM/CS(+6.4), CMP/CS(+3.7), CCAM/CS(+3.9),
+                     CS/RAC(+3.7), IG/IRAC(+4.8)                                p2_4_jaccard_null.csv, p_by<0.05 & z>0 & ~confound
+  1 under: IAC_RAC/RAC z=−5.3                                                   p2_4_jaccard_null.csv, p_by<0.05 & z<0
+
+§8 SCC null:
+  |z| < 1.5 every layer after BY-FDR                                            p2_5_scc_null.csv (z, p_by)
+
+§9 density and reciprocity:
+  ρ: RAC 0.474, IG 0.217, IAC_RAC 0.108, IRAC 0.091,
+     MC 0.03–0.08, RP/IRP/IAC_RDE ≤0.04, min IRP 0.005                          p2_7_proximity_sensitivity.csv (density)
+  R_p: RAC 0.297, IG 0.150, others <0.1                                         p2_7_proximity_sensitivity.csv (reciprocity_pairs)
+  R_e = 2R_p/(1+R_p), same ordering                                             p2_7_proximity_sensitivity.csv (reciprocity_edges)
+  mutual pairs: RAC 384, IG 100, several layers 0–10                            p2_7_proximity_sensitivity.csv (mutual_pairs)
+  SCC raw: CMP 39, CS 26, CCVM 24, CCAM 4, RP 3, IC 2, IRP 1, IAC_RDE 1         p2_7_proximity_sensitivity.csv (largest_scc)
+
+§10 strain strategy:
+  P_i ∈ [0.60, 0.84] all 60 strains — dichotomy collapses                       p2_7_proximity_sensitivity.csv (per-strain)
+
+§11 PCA + GMM:
+  12-D PCA: PC1 32.5% [0.242,0.437], PC2 17.3% [0.134,0.221],
+            PC3 11.8% [0.098,0.150], PC1+PC2 = 49.8%                            p2_3_pca12_variance.csv
+  Horn parallel analysis: 3 components above null                               p2_3_pca12_variance.csv (above_parallel_null)
+  4-D PCA: PC1 54.0%, PC1+PC2 77.7%                                             p2_3_pca4_variance.csv
+  12-D PC1 ↔ 4-D PC1 Spearman ρ = 0.934, p<10⁻²⁶                                 p2_3_pc1_spearman.csv
+  Loadings: PC1+ {CCAM,CCVM,CMP,CS,IG,IC,RP,IRP}, PC1− {IAC_RAC,IRAC,IAC_RDE};
+            PC2+ {RAC,RP,IAC_RAC,IRAC}, PC2− {IG,IC};
+            PC3+ IAC_RDE (0.65)                                                 p2_3_pca12_loadings.csv
+  GMM CV-LL: k=1 full cov; k=2–3 diag, spherical                                p2_2_gmm_modelselect.csv (best_k_cv)
+  BIC/ICL pick larger k (small-N over-selection)                                p2_2_gmm_modelselect.csv
+  Dip test PC1,PC2 both embeddings: p > 0.5                                     p2_2_diptest.csv
+
+§12 cross-layer dominance:
+  mean Spearman of DS = 0.063 (median 0.043, range [−0.659,+0.618])              p2_11_cross_layer_dominance_corr.csv
+  7/66 pairs |ρ|>0.5                                                             p2_11_cross_layer_dominance_corr.csv
+  strongest anti-corr: IG/RAC −0.66, IAC_RDE/RAC −0.63, IAC_RDE/IRAC −0.58       p2_11_cross_layer_dominance_corr.csv
+  Dominance PCA: PC1 24.3%, PC1+PC2 41.2%; 3 PCs for 50%, 6 PCs for 80%          phase2_report.md
+  Bradley–Terry agrees qualitatively                                             p2_11_bt_strengths_per_layer.csv
+
+§13 spatial: pending per-configuration data (script auto-skips).
+
+§14 robustness:
+  4-D vs 12-D PC1 ρ = 0.934                                                      p2_3_pc1_spearman.csv
+  GMM k=1–3 across 6 (embedding × cov) configs                                   p2_2_gmm_modelselect.csv
+  BH vs BY: no qualitative change                                                p2_4_jaccard_null.csv (p_bh, p_by)
+  supra-adjacency ω∈[0.1,1.0]: participation <10% variation                      (legacy)
+
+h3:
+  Pagel's λ = 0.31–0.48 — number is from PI's prior work; script auto-skips
+  without data/phylogeny/tree.nwk. Verify before submission.                     p2_8_phylogeny_pgls.py
+
+
+CONVENTIONS
+-----------
+- Binary by design: all per-layer analyses on A_l = 1[M_l>0]. c_l only enters Σ_l c_l·M_l.
+- Reciprocity: pairs-based R_p = mutual_pairs / connected_pairs (main).
+- Null: 10,000 directed degree-preserving edge-swap draws/layer (NetworkX algorithms.swap),
+  Phipson–Smyth (M+1)/(N+1), BY-FDR default, BH side column.
+- Confound pair: {CCAM, CCVM} reported separately.
+- Model selection: k=1..8 × {full, diag, spherical} × {BIC, ICL, 10-fold CV, silhouette}.
+
+
+OUTSTANDING (from v15 §15)
+--------------------------
+1. IRAC: data_io.py = IA, generate_figs.py may still = MM. v15 commits IA.
+2. Reciprocity default → pairs-based everywhere.
+3. Fig. 5 participation axis: rescale ramp to [0.60, 0.84] or replace with out-degree.
+4. Figure cluster colouring k=4 vs text k=1–3 (CV).
