@@ -1,0 +1,4 @@
+topology,n_tips,vcv_rank,tip_depth_ratio,ultrametric
+ML GTR+GAMMA (build_tree.py),59,44,53.03448275862069,False
+UPGMA (16S distances),59,38,1.0,True
+WPGMA (16S distances),59,38,1.0,True

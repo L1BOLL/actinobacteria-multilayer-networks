@@ -1,0 +1,11 @@
+Tree provenance (regenerate with: python phase2_code/build_tree.py --force)
+
+sequences  : 59 (from 16S_clean.fasta)
+alignment  : MAFFT (pymafft, fftnsi, maxiterate=1000)
+trimming   : trimAl gappyout: 1530 -> 1337 columns
+inference  : VeryFastTree -nt -gtr -gamma (FastTree-2 equivalent ML, GTR+GAMMA)
+seed       : 20260522
+
+These are the tool names that must appear in the manuscript Methods.
+If the coauthor supplies a MAFFT + RAxML tree, overwrite tree.nwk and
+update this file; p2_8_phylogeny_pgls.py consumes it unchanged.

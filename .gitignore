@@ -1,0 +1,6 @@
+# Null-model draws: ~570 MB, fully regenerable from SEED in code/data_io.py.
+.cache/
+
+__pycache__/
+*.pyc
+.DS_Store

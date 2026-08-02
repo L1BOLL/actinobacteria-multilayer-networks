@@ -1,0 +1,361 @@
+embedding,covariance,k_used,cluster,strain
+4D_codebase_embedding,full,4,0,MS138 2
+4D_codebase_embedding,full,4,0,B7.8
+4D_codebase_embedding,full,4,0,MS8 6
+4D_codebase_embedding,full,4,0,MS1 13
+4D_codebase_embedding,full,4,0,MS13 14
+4D_codebase_embedding,full,4,0,S713'V
+4D_codebase_embedding,full,4,0,B3.22
+4D_codebase_embedding,full,4,0,S802'
+4D_codebase_embedding,full,4,0,B4.08
+4D_codebase_embedding,full,4,0,S1707
+4D_codebase_embedding,full,4,0,S1213A
+4D_codebase_embedding,full,4,0,MS3 18
+4D_codebase_embedding,full,4,0,S745A
+4D_codebase_embedding,full,4,0,MS8 13
+4D_codebase_embedding,full,4,0,B701
+4D_codebase_embedding,full,4,0,MS4 1
+4D_codebase_embedding,full,4,0,MS8 20
+4D_codebase_embedding,full,4,0,MS1 18
+4D_codebase_embedding,full,4,0,MS16 2
+4D_codebase_embedding,full,4,0,MS11 13
+4D_codebase_embedding,full,4,0,MS10 14
+4D_codebase_embedding,full,4,0,MS16 7
+4D_codebase_embedding,full,4,0,MS8 10
+4D_codebase_embedding,full,4,0,MS3 15
+4D_codebase_embedding,full,4,0,MS6 8
+4D_codebase_embedding,full,4,0,MS3 11
+4D_codebase_embedding,full,4,0,S709B
+4D_codebase_embedding,full,4,0,MS10 6
+4D_codebase_embedding,full,4,0,MS11 4
+4D_codebase_embedding,full,4,0,MS8 12
+4D_codebase_embedding,full,4,0,MS11 23
+4D_codebase_embedding,full,4,0,MS5 4
+4D_codebase_embedding,full,4,0,S1502.2
+4D_codebase_embedding,full,4,0,MS16 3
+4D_codebase_embedding,full,4,0,MS4 2
+4D_codebase_embedding,full,4,0,S713'W
+4D_codebase_embedding,full,4,0,S1226
+4D_codebase_embedding,full,4,0,MS10 8
+4D_codebase_embedding,full,4,0,MS4 4
+4D_codebase_embedding,full,4,0,S1213B
+4D_codebase_embedding,full,4,0,MS11 19
+4D_codebase_embedding,full,4,0,S1701
+4D_codebase_embedding,full,4,0,MS8 30
+4D_codebase_embedding,full,4,0,MS11 6
+4D_codebase_embedding,full,4,0,MS15 6
+4D_codebase_embedding,full,4,0,MS16 8
+4D_codebase_embedding,full,4,0,MS8 21
+4D_codebase_embedding,full,4,0,S705A
+4D_codebase_embedding,full,4,0,B213
+4D_codebase_embedding,full,4,0,S709A
+4D_codebase_embedding,full,4,1,MS53 7
+4D_codebase_embedding,full,4,1,S1705
+4D_codebase_embedding,full,4,1,S1350
+4D_codebase_embedding,full,4,1,S10071
+4D_codebase_embedding,full,4,2,MS11 21
+4D_codebase_embedding,full,4,2,S625
+4D_codebase_embedding,full,4,2,S524
+4D_codebase_embedding,full,4,2,MS1 14
+4D_codebase_embedding,full,4,3,MS3 10
+4D_codebase_embedding,full,4,3,B201
+4D_codebase_embedding,diag,8,0,B7.8
+4D_codebase_embedding,diag,8,0,S1707
+4D_codebase_embedding,diag,8,0,S1213A
+4D_codebase_embedding,diag,8,0,MS3 18
+4D_codebase_embedding,diag,8,0,S745A
+4D_codebase_embedding,diag,8,0,MS8 20
+4D_codebase_embedding,diag,8,0,MS1 18
+4D_codebase_embedding,diag,8,0,MS16 2
+4D_codebase_embedding,diag,8,0,MS11 13
+4D_codebase_embedding,diag,8,0,MS3 11
+4D_codebase_embedding,diag,8,0,S1502.2
+4D_codebase_embedding,diag,8,0,S713'W
+4D_codebase_embedding,diag,8,0,MS10 8
+4D_codebase_embedding,diag,8,0,S1701
+4D_codebase_embedding,diag,8,1,MS1 13
+4D_codebase_embedding,diag,8,1,S713'V
+4D_codebase_embedding,diag,8,1,S802'
+4D_codebase_embedding,diag,8,1,B4.08
+4D_codebase_embedding,diag,8,1,B701
+4D_codebase_embedding,diag,8,1,MS4 1
+4D_codebase_embedding,diag,8,1,MS8 10
+4D_codebase_embedding,diag,8,1,MS10 6
+4D_codebase_embedding,diag,8,1,MS16 3
+4D_codebase_embedding,diag,8,1,MS4 4
+4D_codebase_embedding,diag,8,1,S1213B
+4D_codebase_embedding,diag,8,1,MS11 19
+4D_codebase_embedding,diag,8,1,MS8 30
+4D_codebase_embedding,diag,8,1,MS15 6
+4D_codebase_embedding,diag,8,1,MS16 8
+4D_codebase_embedding,diag,8,1,MS8 21
+4D_codebase_embedding,diag,8,1,S705A
+4D_codebase_embedding,diag,8,1,S709A
+4D_codebase_embedding,diag,8,2,S1705
+4D_codebase_embedding,diag,8,3,MS1 14
+4D_codebase_embedding,diag,8,4,MS13 14
+4D_codebase_embedding,diag,8,4,B3.22
+4D_codebase_embedding,diag,8,4,MS8 13
+4D_codebase_embedding,diag,8,4,MS53 7
+4D_codebase_embedding,diag,8,4,S1350
+4D_codebase_embedding,diag,8,4,S10071
+4D_codebase_embedding,diag,8,4,MS3 15
+4D_codebase_embedding,diag,8,4,MS4 2
+4D_codebase_embedding,diag,8,4,MS11 6
+4D_codebase_embedding,diag,8,4,B213
+4D_codebase_embedding,diag,8,5,MS138 2
+4D_codebase_embedding,diag,8,5,MS8 6
+4D_codebase_embedding,diag,8,5,MS10 14
+4D_codebase_embedding,diag,8,5,MS16 7
+4D_codebase_embedding,diag,8,5,MS6 8
+4D_codebase_embedding,diag,8,5,S709B
+4D_codebase_embedding,diag,8,5,MS11 4
+4D_codebase_embedding,diag,8,5,MS8 12
+4D_codebase_embedding,diag,8,5,MS11 23
+4D_codebase_embedding,diag,8,6,MS3 10
+4D_codebase_embedding,diag,8,6,B201
+4D_codebase_embedding,diag,8,7,MS11 21
+4D_codebase_embedding,diag,8,7,S625
+4D_codebase_embedding,diag,8,7,S524
+4D_codebase_embedding,diag,8,7,MS5 4
+4D_codebase_embedding,diag,8,7,S1226
+4D_codebase_embedding,spherical,7,0,MS3 10
+4D_codebase_embedding,spherical,7,1,MS138 2
+4D_codebase_embedding,spherical,7,1,B7.8
+4D_codebase_embedding,spherical,7,1,MS8 6
+4D_codebase_embedding,spherical,7,1,MS1 13
+4D_codebase_embedding,spherical,7,1,S713'V
+4D_codebase_embedding,spherical,7,1,B3.22
+4D_codebase_embedding,spherical,7,1,B4.08
+4D_codebase_embedding,spherical,7,1,S1707
+4D_codebase_embedding,spherical,7,1,S745A
+4D_codebase_embedding,spherical,7,1,B701
+4D_codebase_embedding,spherical,7,1,MS16 2
+4D_codebase_embedding,spherical,7,1,MS16 7
+4D_codebase_embedding,spherical,7,1,S524
+4D_codebase_embedding,spherical,7,1,MS3 15
+4D_codebase_embedding,spherical,7,1,MS3 11
+4D_codebase_embedding,spherical,7,1,S709B
+4D_codebase_embedding,spherical,7,1,MS10 6
+4D_codebase_embedding,spherical,7,1,MS11 4
+4D_codebase_embedding,spherical,7,1,MS8 12
+4D_codebase_embedding,spherical,7,1,MS5 4
+4D_codebase_embedding,spherical,7,1,S1502.2
+4D_codebase_embedding,spherical,7,1,S1226
+4D_codebase_embedding,spherical,7,1,MS10 8
+4D_codebase_embedding,spherical,7,1,S1213B
+4D_codebase_embedding,spherical,7,1,MS11 19
+4D_codebase_embedding,spherical,7,1,S1701
+4D_codebase_embedding,spherical,7,1,MS8 30
+4D_codebase_embedding,spherical,7,1,MS11 6
+4D_codebase_embedding,spherical,7,1,MS15 6
+4D_codebase_embedding,spherical,7,1,MS16 8
+4D_codebase_embedding,spherical,7,1,S705A
+4D_codebase_embedding,spherical,7,1,B213
+4D_codebase_embedding,spherical,7,1,S709A
+4D_codebase_embedding,spherical,7,2,MS11 21
+4D_codebase_embedding,spherical,7,2,MS1 14
+4D_codebase_embedding,spherical,7,3,S802'
+4D_codebase_embedding,spherical,7,3,S1213A
+4D_codebase_embedding,spherical,7,3,MS3 18
+4D_codebase_embedding,spherical,7,3,MS4 1
+4D_codebase_embedding,spherical,7,3,MS8 20
+4D_codebase_embedding,spherical,7,3,MS1 18
+4D_codebase_embedding,spherical,7,3,MS11 13
+4D_codebase_embedding,spherical,7,3,MS10 14
+4D_codebase_embedding,spherical,7,3,MS8 10
+4D_codebase_embedding,spherical,7,3,MS6 8
+4D_codebase_embedding,spherical,7,3,MS11 23
+4D_codebase_embedding,spherical,7,3,MS16 3
+4D_codebase_embedding,spherical,7,3,MS4 2
+4D_codebase_embedding,spherical,7,3,S713'W
+4D_codebase_embedding,spherical,7,3,MS4 4
+4D_codebase_embedding,spherical,7,3,MS8 21
+4D_codebase_embedding,spherical,7,4,MS13 14
+4D_codebase_embedding,spherical,7,4,MS8 13
+4D_codebase_embedding,spherical,7,4,MS53 7
+4D_codebase_embedding,spherical,7,4,S1705
+4D_codebase_embedding,spherical,7,4,S1350
+4D_codebase_embedding,spherical,7,4,S10071
+4D_codebase_embedding,spherical,7,5,S625
+4D_codebase_embedding,spherical,7,6,B201
+12D_outdegree_profile,full,5,0,MS13 14
+12D_outdegree_profile,full,5,0,S713'V
+12D_outdegree_profile,full,5,0,S10071
+12D_outdegree_profile,full,5,0,S709B
+12D_outdegree_profile,full,5,0,MS4 2
+12D_outdegree_profile,full,5,0,S709A
+12D_outdegree_profile,full,5,1,MS1 13
+12D_outdegree_profile,full,5,1,MS11 21
+12D_outdegree_profile,full,5,1,S625
+12D_outdegree_profile,full,5,1,S524
+12D_outdegree_profile,full,5,1,MS3 11
+12D_outdegree_profile,full,5,1,MS11 6
+12D_outdegree_profile,full,5,1,MS1 14
+12D_outdegree_profile,full,5,2,MS53 7
+12D_outdegree_profile,full,5,2,MS3 10
+12D_outdegree_profile,full,5,2,S1705
+12D_outdegree_profile,full,5,2,S1350
+12D_outdegree_profile,full,5,2,B201
+12D_outdegree_profile,full,5,3,MS138 2
+12D_outdegree_profile,full,5,3,MS8 6
+12D_outdegree_profile,full,5,3,S1213A
+12D_outdegree_profile,full,5,3,MS8 13
+12D_outdegree_profile,full,5,3,MS8 20
+12D_outdegree_profile,full,5,3,MS11 13
+12D_outdegree_profile,full,5,3,MS10 14
+12D_outdegree_profile,full,5,3,MS16 7
+12D_outdegree_profile,full,5,3,MS8 10
+12D_outdegree_profile,full,5,3,MS6 8
+12D_outdegree_profile,full,5,4,B7.8
+12D_outdegree_profile,full,5,4,B3.22
+12D_outdegree_profile,full,5,4,S802'
+12D_outdegree_profile,full,5,4,B4.08
+12D_outdegree_profile,full,5,4,S1707
+12D_outdegree_profile,full,5,4,MS3 18
+12D_outdegree_profile,full,5,4,S745A
+12D_outdegree_profile,full,5,4,B701
+12D_outdegree_profile,full,5,4,MS4 1
+12D_outdegree_profile,full,5,4,MS1 18
+12D_outdegree_profile,full,5,4,MS16 2
+12D_outdegree_profile,full,5,4,MS3 15
+12D_outdegree_profile,full,5,4,MS10 6
+12D_outdegree_profile,full,5,4,MS11 4
+12D_outdegree_profile,full,5,4,MS8 12
+12D_outdegree_profile,full,5,4,MS11 23
+12D_outdegree_profile,full,5,4,MS5 4
+12D_outdegree_profile,full,5,4,S1502.2
+12D_outdegree_profile,full,5,4,MS16 3
+12D_outdegree_profile,full,5,4,S713'W
+12D_outdegree_profile,full,5,4,S1226
+12D_outdegree_profile,full,5,4,MS10 8
+12D_outdegree_profile,full,5,4,MS4 4
+12D_outdegree_profile,full,5,4,S1213B
+12D_outdegree_profile,full,5,4,MS11 19
+12D_outdegree_profile,full,5,4,S1701
+12D_outdegree_profile,full,5,4,MS8 30
+12D_outdegree_profile,full,5,4,MS15 6
+12D_outdegree_profile,full,5,4,MS16 8
+12D_outdegree_profile,full,5,4,MS8 21
+12D_outdegree_profile,full,5,4,S705A
+12D_outdegree_profile,full,5,4,B213
+12D_outdegree_profile,diag,7,0,MS138 2
+12D_outdegree_profile,diag,7,0,B7.8
+12D_outdegree_profile,diag,7,0,MS8 6
+12D_outdegree_profile,diag,7,0,B3.22
+12D_outdegree_profile,diag,7,0,B4.08
+12D_outdegree_profile,diag,7,0,S1707
+12D_outdegree_profile,diag,7,0,S1213A
+12D_outdegree_profile,diag,7,0,MS3 18
+12D_outdegree_profile,diag,7,0,S745A
+12D_outdegree_profile,diag,7,0,B701
+12D_outdegree_profile,diag,7,0,MS4 1
+12D_outdegree_profile,diag,7,0,MS8 20
+12D_outdegree_profile,diag,7,0,MS1 18
+12D_outdegree_profile,diag,7,0,MS16 2
+12D_outdegree_profile,diag,7,0,MS16 7
+12D_outdegree_profile,diag,7,0,MS6 8
+12D_outdegree_profile,diag,7,0,MS10 6
+12D_outdegree_profile,diag,7,0,MS11 4
+12D_outdegree_profile,diag,7,0,MS8 12
+12D_outdegree_profile,diag,7,0,MS11 23
+12D_outdegree_profile,diag,7,0,MS5 4
+12D_outdegree_profile,diag,7,0,S1226
+12D_outdegree_profile,diag,7,0,MS10 8
+12D_outdegree_profile,diag,7,0,MS4 4
+12D_outdegree_profile,diag,7,0,S1213B
+12D_outdegree_profile,diag,7,0,MS11 19
+12D_outdegree_profile,diag,7,0,S1701
+12D_outdegree_profile,diag,7,0,MS8 30
+12D_outdegree_profile,diag,7,0,MS15 6
+12D_outdegree_profile,diag,7,0,S705A
+12D_outdegree_profile,diag,7,1,MS3 10
+12D_outdegree_profile,diag,7,1,MS1 14
+12D_outdegree_profile,diag,7,1,B201
+12D_outdegree_profile,diag,7,2,MS1 13
+12D_outdegree_profile,diag,7,2,MS13 14
+12D_outdegree_profile,diag,7,2,S802'
+12D_outdegree_profile,diag,7,2,MS11 21
+12D_outdegree_profile,diag,7,2,S10071
+12D_outdegree_profile,diag,7,2,S524
+12D_outdegree_profile,diag,7,2,MS3 15
+12D_outdegree_profile,diag,7,2,S709B
+12D_outdegree_profile,diag,7,2,S1502.2
+12D_outdegree_profile,diag,7,2,MS4 2
+12D_outdegree_profile,diag,7,2,S713'W
+12D_outdegree_profile,diag,7,2,MS16 8
+12D_outdegree_profile,diag,7,2,S709A
+12D_outdegree_profile,diag,7,3,MS53 7
+12D_outdegree_profile,diag,7,3,S1705
+12D_outdegree_profile,diag,7,3,S1350
+12D_outdegree_profile,diag,7,4,MS8 13
+12D_outdegree_profile,diag,7,4,MS11 13
+12D_outdegree_profile,diag,7,4,MS10 14
+12D_outdegree_profile,diag,7,4,MS8 10
+12D_outdegree_profile,diag,7,4,MS16 3
+12D_outdegree_profile,diag,7,4,B213
+12D_outdegree_profile,diag,7,5,S625
+12D_outdegree_profile,diag,7,5,MS3 11
+12D_outdegree_profile,diag,7,6,S713'V
+12D_outdegree_profile,diag,7,6,MS11 6
+12D_outdegree_profile,diag,7,6,MS8 21
+12D_outdegree_profile,spherical,7,0,MS138 2
+12D_outdegree_profile,spherical,7,0,B7.8
+12D_outdegree_profile,spherical,7,0,MS8 6
+12D_outdegree_profile,spherical,7,0,MS1 13
+12D_outdegree_profile,spherical,7,0,S713'V
+12D_outdegree_profile,spherical,7,0,B3.22
+12D_outdegree_profile,spherical,7,0,S802'
+12D_outdegree_profile,spherical,7,0,B4.08
+12D_outdegree_profile,spherical,7,0,S1707
+12D_outdegree_profile,spherical,7,0,MS3 18
+12D_outdegree_profile,spherical,7,0,S745A
+12D_outdegree_profile,spherical,7,0,B701
+12D_outdegree_profile,spherical,7,0,MS4 1
+12D_outdegree_profile,spherical,7,0,MS1 18
+12D_outdegree_profile,spherical,7,0,MS16 2
+12D_outdegree_profile,spherical,7,0,MS16 7
+12D_outdegree_profile,spherical,7,0,MS3 15
+12D_outdegree_profile,spherical,7,0,S709B
+12D_outdegree_profile,spherical,7,0,MS10 6
+12D_outdegree_profile,spherical,7,0,MS11 4
+12D_outdegree_profile,spherical,7,0,MS8 12
+12D_outdegree_profile,spherical,7,0,MS11 23
+12D_outdegree_profile,spherical,7,0,MS5 4
+12D_outdegree_profile,spherical,7,0,S1502.2
+12D_outdegree_profile,spherical,7,0,MS4 2
+12D_outdegree_profile,spherical,7,0,S713'W
+12D_outdegree_profile,spherical,7,0,S1226
+12D_outdegree_profile,spherical,7,0,MS10 8
+12D_outdegree_profile,spherical,7,0,MS4 4
+12D_outdegree_profile,spherical,7,0,S1213B
+12D_outdegree_profile,spherical,7,0,MS11 19
+12D_outdegree_profile,spherical,7,0,S1701
+12D_outdegree_profile,spherical,7,0,MS8 30
+12D_outdegree_profile,spherical,7,0,MS15 6
+12D_outdegree_profile,spherical,7,0,MS16 8
+12D_outdegree_profile,spherical,7,0,MS8 21
+12D_outdegree_profile,spherical,7,0,S705A
+12D_outdegree_profile,spherical,7,0,B213
+12D_outdegree_profile,spherical,7,0,S709A
+12D_outdegree_profile,spherical,7,1,MS11 21
+12D_outdegree_profile,spherical,7,1,S625
+12D_outdegree_profile,spherical,7,1,S524
+12D_outdegree_profile,spherical,7,1,MS3 11
+12D_outdegree_profile,spherical,7,1,MS11 6
+12D_outdegree_profile,spherical,7,1,MS1 14
+12D_outdegree_profile,spherical,7,1,B201
+12D_outdegree_profile,spherical,7,2,MS53 7
+12D_outdegree_profile,spherical,7,2,S1705
+12D_outdegree_profile,spherical,7,2,S1350
+12D_outdegree_profile,spherical,7,3,S1213A
+12D_outdegree_profile,spherical,7,3,MS8 13
+12D_outdegree_profile,spherical,7,3,MS8 20
+12D_outdegree_profile,spherical,7,3,MS11 13
+12D_outdegree_profile,spherical,7,3,MS10 14
+12D_outdegree_profile,spherical,7,3,MS8 10
+12D_outdegree_profile,spherical,7,3,MS6 8
+12D_outdegree_profile,spherical,7,3,MS16 3
+12D_outdegree_profile,spherical,7,4,MS3 10
+12D_outdegree_profile,spherical,7,5,S10071
+12D_outdegree_profile,spherical,7,6,MS13 14

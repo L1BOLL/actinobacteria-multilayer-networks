@@ -1,0 +1,6 @@
+comparison,mantel_rho,p_value
+"12-D out-degree profile (z, Euclidean)",-0.022321966257267362,0.7773
+category DA,0.006686901051000111,0.921
+category IA,-0.05503707469311031,0.3455
+category MM,0.036626493558092964,0.585
+category MC,0.006187256502049445,0.9245

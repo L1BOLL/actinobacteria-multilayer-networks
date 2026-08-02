@@ -1,0 +1,33 @@
+# Supplement code bundle — pinned to the versions the reported numbers were
+# produced with. Everything installs from PyPI; no external binaries, no sudo.
+#
+#   pip install -r requirements.txt
+#   python run_source.py
+
+# --- core analysis -----------------------------------------------------------
+numpy>=2.3.5
+pandas>=2.3.3
+scipy>=1.16.3
+scikit-learn>=1.7.2
+statsmodels>=0.14.6
+networkx>=3.5
+matplotlib>=3.10.8
+diptest>=0.11.0
+openpyxl>=3.1.5
+
+# --- phylogenetics (P2.8) ----------------------------------------------------
+# RAxML and MAFFT have no pip distribution, so the tree is built from
+# pip-installable equivalents; phase2_code/build_tree.py records exactly which
+# tools ran into data/phylogeny/tree_provenance.txt, and those are the names that
+# must appear in the manuscript Methods.
+#
+# pymafft     - MAFFT bindings; falls back to pyfamsa (FAMSA) if it fails
+# pytrimal    - trimAl, trims ragged Sanger ends
+# veryfasttree- FastTree-2 equivalent, GTR+GAMMA maximum likelihood
+# dendropy    - Newick I/O and variance-covariance construction
+pymafft>=0.1.2
+pyfamsa>=0.7.0
+pytrimal>=0.8.5
+veryfasttree>=4.0.4.1
+dendropy>=5.0.10
+biopython>=1.87
