@@ -363,7 +363,7 @@ def make_figure_4(embeddings: pd.DataFrame, identity: pd.DataFrame) -> None:
         for strain, score in rows:
             summary_ax.text(0.02, y, f"{strain}: {score:.2f}", fontsize=9.5); y -= 0.05
         y -= 0.03
-    save_figure(fig, 'figure4_ecological_strategy_space')
+    save_figure(fig, 'figure5_ecological_strategy_space')
 
 
 def make_figure_5(matrices: dict[str, pd.DataFrame], identity: pd.DataFrame) -> None:
@@ -389,7 +389,7 @@ def make_figure_5(matrices: dict[str, pd.DataFrame], identity: pd.DataFrame) -> 
     summary_ax = fig.add_subplot(gs[0, 2]); summary_ax.axis('off'); y = 0.96
     for _, row in variability.head(10).iterrows():
         summary_ax.text(0.0, y, f"{row['strain']}", fontsize=10, fontweight='bold'); summary_ax.text(0.0, y - 0.05, f"participation={row['participation']:.2f}  sd_out={row['sd_outdeg']:.2f}  switches={row['community_switches']:.0f}", fontsize=8.8); y -= 0.10
-    save_figure(fig, 'figure5_role_switching')
+    save_figure(fig, 'figure7_role_switching')
 
 
 def make_embedding_representation_figure(embeddings: pd.DataFrame, identity: pd.DataFrame) -> None:
@@ -416,7 +416,7 @@ def make_embedding_representation_figure(embeddings: pd.DataFrame, identity: pd.
         values = row[categories].to_numpy(dtype=float); values = np.concatenate([values, [values[0]]])
         color = highlight_colors[strain]
         ax.set_theta_offset(np.pi / 2); ax.set_theta_direction(-1); ax.plot(angles, values, color=color, linewidth=2.0); ax.fill(angles, values, color=color, alpha=0.18); ax.set_ylim(0, 10); ax.set_xticks(angles[:-1]); ax.set_xticklabels(categories, fontsize=9); ax.set_title(f"{strain}\n{label}", va='bottom', pad=14, fontsize=10.5, color=color)
-    save_figure(fig, 'embedding_representation_archetypes')
+    save_figure(fig, 'figure6_embedding_archetypes')
 
 
 def write_manifest(stats_df: pd.DataFrame) -> None:
