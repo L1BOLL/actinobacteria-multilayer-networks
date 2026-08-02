@@ -336,8 +336,8 @@ same on two ultrametric distance topologies, and a tree-free Mantel test - agree
 that interaction profiles carry no detectable 16S phylogenetic signal in these
 strains. h3 as stated is not supported.
 
-Outputs: `p2_8_pgls.csv`, `p2_8_mantel.csv`, `p2_8_vcv_diagnostics.csv`,
-`figures/p2_8_phylo_signal.png`
+Outputs: `p2_8_pgls.csv`, `p2_8_mantel.csv`, `p2_8_vcv_diagnostics.csv`.
+Figures: `figures/fig_h3_phylogeny.*` (main text), `figures/figS_permutation_calibration.*` (supplement).
 <!-- P2.9 RESULTS -->
 
 ## P2.9 Spatial decomposition (3 configurations)
@@ -474,7 +474,7 @@ hypothesis-generating observation only: neither layer clears FDR, and 2 of 12
 marginal results is a weak basis for a mechanistic claim.
 
 Outputs: `p2_12_metabolism_strain.csv`, `p2_12_metabolism_dyad.csv`,
-`p2_12_metabolism_profiles.csv`, `figures/p2_12_metabolism.png`
+`p2_12_metabolism_profiles.csv`. Figure: `figures/fig_metabolism.*` (main text).
 <!-- P2.13 RESULTS -->
 
 ## P2.13 Taxon sensitivity (n=56, Streptomyces only)

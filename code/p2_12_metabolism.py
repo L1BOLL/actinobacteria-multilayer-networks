@@ -153,29 +153,7 @@ def main() -> None:
     })
     profile_df.to_csv(TABLE_DIR / "p2_12_metabolism_profiles.csv", index=False)
 
-    # --- figure -------------------------------------------------------------- #
-    fig, axes = plt.subplots(1, 3, figsize=(15.5, 4.6), constrained_layout=True)
-    axes[0].hist(breadth, bins=np.arange(0, len(sugars) + 2) - 0.5, color="#94a3b8", edgecolor="white")
-    axes[0].set_xlabel(f"Sugars used (of {len(sugars)}), presence/absence")
-    axes[0].set_ylabel("Strains")
-    axes[0].set_title(f"Binarised breadth is saturated\nmean {breadth.mean():.1f} of {len(sugars)}", fontsize=10)
-
-    axes[1].scatter(capacity, total, color="#4c78a8", s=38, edgecolor="white")
-    r_tot = spearmanr(capacity, total)
-    axes[1].set_xlabel("Graded assimilation capacity (sum of 0-4 scores)")
-    axes[1].set_ylabel("Total out-degree")
-    axes[1].set_title(f"No strain-level association\nSpearman rho = {r_tot.statistic:+.3f}, p = {r_tot.pvalue:.2f}", fontsize=10)
-    axes[1].grid(color="#e5e7eb", lw=0.6)
-
-    d = dyad_df.sort_values("mantel_rho")
-    colors = ["#b91c1c" if q < 0.10 else "#94a3b8" for q in d["q_BH"]]
-    axes[2].barh(d["layer"], d["mantel_rho"], color=colors)
-    axes[2].axvline(0, color="#111827", lw=0.8)
-    axes[2].set_xlabel("Mantel rho: niche distance vs interaction")
-    axes[2].set_title("Dyad level: metabolically dissimilar pairs\nantagonise more (q < 0.10 highlighted)", fontsize=10)
-    axes[2].grid(axis="x", color="#e5e7eb", lw=0.6)
-    fig.savefig(FIG_DIR / "p2_12_metabolism.png", dpi=300, bbox_inches="tight")
-    plt.close(fig)
+    # Figure produced by make_paper_figures.py (fig_metabolism).
 
     # --- report -------------------------------------------------------------- #
     strain_sig = strain_df[strain_df["q_BH"] < 0.05]
@@ -215,7 +193,7 @@ hypothesis-generating observation only: neither layer clears FDR, and 2 of {len(
 marginal results is a weak basis for a mechanistic claim.
 
 Outputs: `p2_12_metabolism_strain.csv`, `p2_12_metabolism_dyad.csv`,
-`p2_12_metabolism_profiles.csv`, `figures/p2_12_metabolism.png`
+`p2_12_metabolism_profiles.csv`. Figure: `figures/fig_metabolism.*` (main text).
 """
     replace_section(
         REPORT_PATH, "<!-- P2.12 RESULTS -->",

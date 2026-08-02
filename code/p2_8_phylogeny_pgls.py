@@ -323,31 +323,10 @@ def main() -> None:
     mantel_df = pd.DataFrame(mantel_rows, columns=["comparison", "mantel_rho", "p_value"])
     mantel_df.to_csv(TABLE_DIR / "p2_8_mantel.csv", index=False)
 
-    # --- figure -------------------------------------------------------------- #
-    primary = all_lambda[all_lambda["topology"] == topologies[0][0]].sort_values("pagel_lambda")
-    fig, axes = plt.subplots(1, 2, figsize=(13.0, 5.2), constrained_layout=True)
-    axes[0].barh(primary["trait"], primary["pagel_lambda"], color="#4c78a8")
-    axes[0].axvline(0.31, ls="--", color="#b91c1c", lw=1.2)
-    axes[0].axvline(0.48, ls="--", color="#b91c1c", lw=1.2)
-    axes[0].text(0.395, -0.8, "claimed\n0.31-0.48", color="#b91c1c", ha="center", va="top", fontsize=8)
-    axes[0].set_xlim(0, 1)
-    axes[0].set_xlabel("Pagel's $\\lambda$ (ML)")
-    axes[0].set_title(f"Phylogenetic signal per trait\n{topologies[0][0]}, n = {n}", fontsize=10)
-    axes[0].tick_params(axis="y", labelsize=7)
-    axes[0].grid(axis="x", color="#e5e7eb", lw=0.6)
-
-    counts = sizes.value_counts().sort_index()
-    axes[1].bar(counts.index.astype(str), counts.to_numpy(), color="#0f766e")
-    axes[1].set_xlabel("Strains sharing an identical 16S sequence")
-    axes[1].set_ylabel("Number of such groups")
-    axes[1].set_title(
-        f"16S resolution limit: {n} strains -> {n_geno} distinct genotypes\n"
-        f"{int(tied.sum())} strains are phylogenetically indistinguishable",
-        fontsize=10,
-    )
-    axes[1].grid(axis="y", color="#e5e7eb", lw=0.6)
-    fig.savefig(FIG_DIR / "p2_8_phylo_signal.png", dpi=300, bbox_inches="tight")
-    plt.close(fig)
+    # Figures are produced by make_paper_figures.py, which plots each observed
+    # lambda against the null it was tested on. A bare bar chart of lambda is
+    # actively misleading here: the point estimates run to 0.95 while every one
+    # of them is null under permutation.
 
     # --- report -------------------------------------------------------------- #
     sig = all_lambda[all_lambda["q_BH"] < 0.05]
@@ -417,8 +396,8 @@ same on two ultrametric distance topologies, and a tree-free Mantel test - agree
 that interaction profiles carry no detectable 16S phylogenetic signal in these
 strains. h3 as stated is not supported.
 
-Outputs: `p2_8_pgls.csv`, `p2_8_mantel.csv`, `p2_8_vcv_diagnostics.csv`,
-`figures/p2_8_phylo_signal.png`
+Outputs: `p2_8_pgls.csv`, `p2_8_mantel.csv`, `p2_8_vcv_diagnostics.csv`.
+Figures: `figures/fig_h3_phylogeny.*` (main text), `figures/figS_permutation_calibration.*` (supplement).
 """
     replace_section(REPORT_PATH, "<!-- P2.8 RESULTS -->", "P2.8 Phylogenetic signal (PGLS)", body)
 

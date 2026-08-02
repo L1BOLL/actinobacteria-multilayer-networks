@@ -33,6 +33,7 @@ STAGES = [
     "p2_12_metabolism.py",
     "p2_13_taxon_sensitivity.py",
     "generate_figs.py",
+    "make_paper_figures.py",
 ]
 
 
