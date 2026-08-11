@@ -1,0 +1,13 @@
+﻿Pair,Categories,J_obs,J_null mean,z,BY q,Direction,Mechanistic reading
+CCAM–CCVM,MC–MC,0.336,0.129,16.19,0.0045,over,Coupled aerial/vegetative pigmentation through the shared bld–whi developmental cascade and common secondary-metabolite pool
+CCAM–CMP,MC–MC,0.121,0.053,7.69,0.0045,over,Coordinated mycelium development: aerial pigmentation co-varies with mycelial production via the bld–whi cascade
+CCVM–CMP,MC–MC,0.108,0.047,8.23,0.0045,over,Coordinated mycelium development: vegetative pigmentation co-varies with mycelial production via shared metabolic-developmental regulation
+CMP–CS,MC–MC,0.115,0.081,3.68,0.019,over,Mycelium production ↔ sporulation: joint output of the developmental cascade
+CCVM–CS,MC–MC,0.062,0.025,6.41,0.0045,over,Vegetative pigmentation ↔ sporulation: pigment biosynthesis is tied to the developmental transition into aerial growth and spores
+CCAM–CS,MC–MC,0.046,0.023,3.86,0.019,over,Aerial pigmentation ↔ sporulation: both downstream of the same developmental switch
+IRAC–RAC,IA–DA,0.166,0.133,9.24,0.0045,over,Inhibition and release act on the same antimicrobial axis
+IG–IRAC,DA–IA,0.092,0.065,4.82,0.0045,over,Growth-inhibition ↔ inhibition of antimicrobial release: targets of the same antagonistic regulatory circuit
+CS–RAC,MC–DA,0.093,0.08500000000000001,3.67,0.016,over,"Sporulation response co-occurs with antimicrobial release, consistent with competition-sensing"
+IAC_RAC–RAC,IA–DA,0.104,0.125,-5.32,0.0045,under,Induction of antimicrobial release and constitutive release avoid the same dyads: a strain that needs to be induced is typically not also a constitutive producer toward the same target
+,,,,,,,
+"Table 2. Layer pairs deviating from a degree-preserving null. Jaccard similarity J_obs on directed edge sets compared to 10,000 independent degree-preserving edge-swap rewirings of each layer; z = (J_obs – mean(J_null)) / sd(J_null). Two-sided empirical p with Phipson-Smyth (M+1)/(N+1) correction, Benjamini-Yekutieli–corrected across all 66 pairs (BY chosen for robustness to the dependence imposed by each layer appearing in 11 tests). Only pairs with BY q < 0.05 shown. 9 of 66 pairs over-overlap, 1 under-overlaps; the remaining 56 pairs are indistinguishable from the degree-preserving null. Over-overlapping pairs cluster on two mechanistic groupings: (i) the morphogenetic-developmental program (six MC × MC pairs, plus the CS × RAC bridge); (ii) different actions on the same antimicrobial axis (IRAC–RAC, IG–IRAC).",,,,,,,
