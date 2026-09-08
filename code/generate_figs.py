@@ -254,7 +254,7 @@ def add_panel_label(ax: plt.Axes, label: str) -> None:
     ax.text(-0.1, 1.05, label, transform=ax.transAxes, fontsize=16, fontweight="bold", va="bottom", ha="right")
 
 
-def make_figure_2(matrices: dict[str, pd.DataFrame], stats_df: pd.DataFrame) -> None:
+def make_figure_s1(matrices: dict[str, pd.DataFrame], stats_df: pd.DataFrame) -> None:
     selected = ["RAC", "IG", "CCVM", "IRP"]
     fig = plt.figure(figsize=(16, 9.9))
     gs = GridSpec(2, 8, figure=fig, height_ratios=[1.0, 0.9], hspace=0.34, wspace=0.45)
@@ -274,10 +274,10 @@ def make_figure_2(matrices: dict[str, pd.DataFrame], stats_df: pd.DataFrame) -> 
         ax.set_xticks(np.arange(len(LAYER_ORDER)))
         ax.set_xticklabels(LAYER_ORDER, rotation=45, ha="right")
         ax.set_title(title)
-    save_figure(fig, "figure2_antagonistic_backbone")
+    save_figure(fig, "figureS1_layer_architecture")
 
 
-def make_figure_3(matrices: dict[str, pd.DataFrame]) -> None:
+def make_figure_s3(matrices: dict[str, pd.DataFrame]) -> None:
     stats_df = build_stats_df(matrices)
     jaccard, cosine = similarity_matrices(matrices)
     dist = 1 - jaccard
@@ -308,7 +308,7 @@ def make_figure_3(matrices: dict[str, pd.DataFrame]) -> None:
     y = 0.97
     for rank, (a, b, jac, cosv) in enumerate(top_pairs[:7], start=1):
         table_ax.text(0.0, y, f"{rank}. {a} - {b}", fontsize=10.2, fontweight='bold'); table_ax.text(0.0, y - 0.05, f"Jaccard {jac:.3f}", fontsize=9.1); table_ax.text(0.53, y - 0.05, f"Cosine {cosv:.3f}", fontsize=9.1); y -= 0.115
-    save_figure(fig, 'figure3_layer_similarity_partitioning')
+    save_figure(fig, 'figureS3_raw_similarity')
 
 
 def embedding_pca(df: pd.DataFrame) -> tuple[PCA, np.ndarray, np.ndarray]:
@@ -330,40 +330,6 @@ def embedding_pca(df: pd.DataFrame) -> tuple[PCA, np.ndarray, np.ndarray]:
 def pc_axis_labels(pca: PCA) -> tuple[str, str]:
     evr = pca.explained_variance_ratio_ * 100
     return f"PC1 ({evr[0]:.1f}% var.)", f"PC2 ({evr[1]:.1f}% var.)"
-
-
-def make_figure_4(embeddings: pd.DataFrame, identity: pd.DataFrame) -> None:
-    df = embeddings.merge(identity[["strain", "participation", "cluster"]], on="strain", how="left")
-    pca, coords, loadings = embedding_pca(df)
-    df["pc1"] = coords[:, 0]; df["pc2"] = coords[:, 1]
-    exemplar_names = set(); exemplar_names.update(df.nlargest(2, 'DA')['strain']); exemplar_names.update(df.nlargest(2, 'IA')['strain']); exemplar_names.update(df.nlargest(2, 'MM')['strain']); exemplar_names.update(df.nlargest(2, 'MC')['strain'])
-    exemplars = df[df['strain'].isin(exemplar_names)].copy()
-    fig = plt.figure(figsize=(15.9, 9.3)); gs = GridSpec(1, 3, figure=fig, width_ratios=[1.42, 0.74, 0.84], wspace=0.38)
-    scatter_ax = fig.add_subplot(gs[0, 0])
-    palette = sns.color_palette('Spectral', n_colors=int(df['cluster'].nunique()))
-    cluster_colors = {cluster: palette[i] for i, cluster in enumerate(sorted(df['cluster'].dropna().unique()))}
-    for cluster, sub in df.groupby('cluster'):
-        scatter_ax.scatter(sub['pc1'], sub['pc2'], s=45 + 120 * sub['participation'], color=cluster_colors.get(cluster, '#64748b'), edgecolor='white', linewidth=0.7, alpha=0.9, label=f"Cluster {int(cluster)}")
-    for i, axis_name in enumerate(['DA', 'IA', 'MM', 'MC']):
-        x, y = loadings[i, 0] * 3.0, loadings[i, 1] * 3.0
-        scatter_ax.add_patch(FancyArrowPatch((0, 0), (x, y), arrowstyle='-|>', mutation_scale=13, linewidth=1.8, color=CATEGORY_COLORS.get(axis_name, CATEGORY_COLORS['MM'])))
-        scatter_ax.text(x * 1.08, y * 1.08, axis_name, fontsize=11, fontweight='bold')
-    for _, row in exemplars.iterrows():
-        scatter_ax.text(row['pc1'] + 0.08, row['pc2'] + 0.05, row['strain'], fontsize=9)
-    xlab, ylab = pc_axis_labels(pca)
-    scatter_ax.set_xlabel(xlab, fontsize=11); scatter_ax.set_ylabel(ylab, fontsize=11)
-    profile_ax = fig.add_subplot(gs[0, 1])
-    ordered_profiles = exemplars[['strain', 'DA', 'IA', 'MM', 'MC']].assign(total=lambda x: x[['DA', 'IA', 'MM', 'MC']].sum(axis=1)).sort_values('total', ascending=False).head(8).set_index('strain')[['DA', 'IA', 'MM', 'MC']]
-    sns.heatmap(ordered_profiles, ax=profile_ax, cmap=sns.color_palette('rocket', as_cmap=True), linewidths=0.5, linecolor='white', cbar_kws={'label': 'Scaled ecological score'})
-    summary_ax = fig.add_subplot(gs[0, 2]); summary_ax.axis('off')
-    blocks = [('DA leaders', df.nlargest(3, 'DA')[['strain', 'DA']].values.tolist(), CATEGORY_COLORS['DA']), ('IA leaders', df.nlargest(3, 'IA')[['strain', 'IA']].values.tolist(), CATEGORY_COLORS['IA']), ('MM leaders', df.nlargest(3, 'MM')[['strain', 'MM']].values.tolist(), CATEGORY_COLORS['MM']), ('MC leaders', df.nlargest(3, 'MC')[['strain', 'MC']].values.tolist(), CATEGORY_COLORS['MC'])]
-    y = 0.95
-    for title, rows, color in blocks:
-        summary_ax.text(0.0, y, title, fontsize=10.5, fontweight='bold', color=color); y -= 0.06
-        for strain, score in rows:
-            summary_ax.text(0.02, y, f"{strain}: {score:.2f}", fontsize=9.5); y -= 0.05
-        y -= 0.03
-    save_figure(fig, 'figure5_ecological_strategy_space')
 
 
 def make_figure_5(matrices: dict[str, pd.DataFrame], identity: pd.DataFrame) -> None:
@@ -389,10 +355,10 @@ def make_figure_5(matrices: dict[str, pd.DataFrame], identity: pd.DataFrame) -> 
     summary_ax = fig.add_subplot(gs[0, 2]); summary_ax.axis('off'); y = 0.96
     for _, row in variability.head(10).iterrows():
         summary_ax.text(0.0, y, f"{row['strain']}", fontsize=10, fontweight='bold'); summary_ax.text(0.0, y - 0.05, f"participation={row['participation']:.2f}  sd_out={row['sd_outdeg']:.2f}  switches={row['community_switches']:.0f}", fontsize=8.8); y -= 0.10
-    save_figure(fig, 'figure7_role_switching')
+    save_figure(fig, 'figure5_role_switching')
 
 
-def make_embedding_representation_figure(embeddings: pd.DataFrame, identity: pd.DataFrame) -> None:
+def make_figure_s8(embeddings: pd.DataFrame, identity: pd.DataFrame) -> None:
     df = embeddings.merge(identity[['strain', 'participation', 'cluster']], on='strain', how='left')
     pca, coords, loadings = embedding_pca(df)
     df['pc1'] = coords[:, 0]; df['pc2'] = coords[:, 1]
@@ -416,11 +382,11 @@ def make_embedding_representation_figure(embeddings: pd.DataFrame, identity: pd.
         values = row[categories].to_numpy(dtype=float); values = np.concatenate([values, [values[0]]])
         color = highlight_colors[strain]
         ax.set_theta_offset(np.pi / 2); ax.set_theta_direction(-1); ax.plot(angles, values, color=color, linewidth=2.0); ax.fill(angles, values, color=color, alpha=0.18); ax.set_ylim(0, 10); ax.set_xticks(angles[:-1]); ax.set_xticklabels(categories, fontsize=9); ax.set_title(f"{strain}\n{label}", va='bottom', pad=14, fontsize=10.5, color=color)
-    save_figure(fig, 'figure6_embedding_archetypes')
+    save_figure(fig, 'figureS8_embedding_archetypes')
 
 
 def write_manifest(stats_df: pd.DataFrame) -> None:
-    lines = ['Generated figures:', '  figure2_antagonistic_backbone.{png,svg}', '  figure3_layer_similarity_partitioning.{png,svg}', '  figure4_ecological_strategy_space.{png,svg}', '  figure5_role_switching.{png,svg}', '  embedding_representation_archetypes.{png,svg}', '', 'Layer statistics used in the figures:', stats_df.round(4).to_csv(index=True)]
+    lines = ['Generated figures:', '  figureS1_layer_architecture.{png,svg}', '  figureS3_raw_similarity.{png,svg}', '  figure5_role_switching.{png,svg}', '  figureS8_embedding_archetypes.{png,svg}', '', 'Layer statistics used in the figures:', stats_df.round(4).to_csv(index=True)]
     (OUTDIR / 'manifest.txt').write_text('\n'.join(lines), encoding='utf-8')
 
 
@@ -433,13 +399,14 @@ def main() -> None:
         raise FileNotFoundError(EMBEDDING_CSV)
     identity_path = IDENTITY_CSV
     identity = pd.read_csv(identity_path).rename(columns={'Unnamed: 0': 'strain'}) if identity_path.exists() else build_ecological_identity(matrices)
-    make_figure_2(matrices, stats_df)
-    make_figure_3(matrices)
-    # make_figure_4 is retired: it colours strains by mixture assignment, which
-    # contradicts the reported conclusion that no discrete clusters are supported.
-    # code/figure_4_strategy.py supersedes it and colours by a continuous quantity.
+    make_figure_s1(matrices, stats_df)
+    make_figure_s3(matrices)
+    # The cluster-coloured ordination (make_figure_4, figure5_ecological_strategy_space)
+    # was removed: it coloured strains by mixture assignment, contradicting the
+    # reported conclusion that no discrete clusters are supported. Figure 4 is now
+    # drawn by code/figure_4_strategy.py, coloured by a continuous quantity.
     make_figure_5(matrices, identity)
-    make_embedding_representation_figure(embeddings, identity)
+    make_figure_s8(embeddings, identity)
     write_manifest(stats_df)
     print('Generated figures in', OUTDIR)
 

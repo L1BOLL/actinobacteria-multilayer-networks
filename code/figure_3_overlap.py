@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Final Figure 3 — cross-layer overlap against the degree-preserving null.
 
-Reads BN_paper_methods/supplementary/tables/p2_4_jaccard_null.csv, which is the
+Reads BN_paper_methods/supplementary/tables/tableS2_layer_overlap_full.csv, which is the
 output of code/p2_4_jaccard_null.py. Nothing is hard-coded: the panel titles,
 the counts in the annotation and the significance marks all derive from the CSV.
 
@@ -50,7 +50,7 @@ def tag(ax, letter: str, dx: float = -0.16) -> None:
 
 
 def main() -> None:
-    df = pd.read_csv(TABLES / "p2_4_jaccard_null.csv")
+    df = pd.read_csv(TABLES / "tableS2_layer_overlap_full.csv")
     n_draws = int(df["n_null_draws"].iloc[0])
     style()
 

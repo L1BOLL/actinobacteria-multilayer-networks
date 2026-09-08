@@ -115,7 +115,7 @@ def main() -> None:
     ax.set_title("12D out-degree PCA scree, bootstrap CI, parallel-analysis null")
     ax.grid(axis="y", color="#e5e7eb", linewidth=0.6)
     ax.legend(frameon=False)
-    save_figure(fig, "p2_3_pca12_scree", FIG_DIR)
+    save_figure(fig, "figureS5_parallel_analysis", FIG_DIR)
     plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(7.5, 6.0))
@@ -166,7 +166,7 @@ Outputs:
 - p2_3_pca4_variance.csv
 - p2_3_pca12_loadings.csv
 - p2_3_pc1_spearman.csv
-- p2_3_pca12_scree.png, p2_3_pca12_biplot.png
+- figureS5_parallel_analysis.png, p2_3_pca12_biplot.png
 """
     replace_section(REPORT_PATH, "<!-- P2.3 RESULTS -->", "P2.3 PCA on 12D out-degree space", body)
 

@@ -214,7 +214,7 @@ def main() -> None:
                 for strain in pd.Index(df.index)[labels == cidx]:
                     membership_rows.append({"embedding": name, "covariance": cov, "k_used": int(k_icl), "cluster": cidx, "strain": strain})
 
-    save_figure(fig, "p2_2_bic_curves", FIG_DIR)
+    save_figure(fig, "figureS6_mixture_selection", FIG_DIR)
     plt.close(fig)
 
     bic_df = pd.DataFrame(records)
@@ -266,7 +266,7 @@ Outputs:
 - p2_2_summary.csv
 - p2_2_cluster_centroids.csv (ICL-preferred k only)
 - p2_2_cluster_membership.csv
-- p2_2_bic_curves.png
+- figureS6_mixture_selection.png
 """
     replace_section(REPORT_PATH, "<!-- P2.2 RESULTS -->", "P2.2 Cluster vs continuum", body)
 

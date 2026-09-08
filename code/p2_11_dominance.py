@@ -72,7 +72,7 @@ def main() -> None:
     ds_df = pd.DataFrame(ds_matrix, index=node_ids, columns=layer_ids)
     bt_df = pd.DataFrame(bt_matrix, index=node_ids, columns=layer_ids)
     ds_df.to_csv(TABLE_DIR / "p2_11_davids_per_layer.csv")
-    bt_df.to_csv(TABLE_DIR / "p2_11_bt_strengths_per_layer.csv")
+    bt_df.to_csv(TABLE_DIR / "tableS3_dominance_concordance.csv")
 
     L = len(layer_ids)
     corr = np.zeros((L, L), dtype=float)
@@ -132,7 +132,7 @@ Seed: {SEED}. Per-layer DS and BT; cross-layer Spearman; PCA on z-scored 60×{L}
 
 Outputs:
 - p2_11_davids_per_layer.csv
-- p2_11_bt_strengths_per_layer.csv
+- tableS3_dominance_concordance.csv
 - p2_11_cross_layer_dominance_corr.csv
 - p2_11_dominance.png
 """

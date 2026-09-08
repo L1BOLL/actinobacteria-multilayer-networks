@@ -3,9 +3,9 @@
 
 Produces three figures, each as PNG (300 dpi) and PDF (vector, for typesetting):
 
-  figure12_h3_phylogeny        main text  - ecological strategy is decoupled from 16S
-  figure13_metabolism          main text  - assimilation does not predict network position
-  figureS4_permutation_calibration supplement - why the asymptotic lambda test fails here
+  figure6_phylogeny        main text  - ecological strategy is decoupled from 16S
+  figureS12_metabolism          main text  - assimilation does not predict network position
+  figureS10_lambda_calibration supplement - why the asymptotic lambda test fails here
 
 Design notes, because these figures make a *negative* claim and are easy to get
 wrong: a bare bar chart of Pagel's lambda reads as "strong signal" no matter what
@@ -198,7 +198,7 @@ def figure_h3(pgls: pd.DataFrame, mantel: pd.DataFrame, Dg: np.ndarray, Dp: np.n
     ax.set_axisbelow(True)
     panel_tag(ax, "c")
 
-    save(fig, "figure12_h3_phylogeny")
+    save(fig, "figure6_phylogeny")
 
 
 # --------------------------------------------------------------------------- #
@@ -264,7 +264,7 @@ def figure_metabolism() -> None:
     ax.set_axisbelow(True)
     panel_tag(ax, "c")
 
-    save(fig, "figure13_metabolism")
+    save(fig, "figureS12_metabolism")
 
 
 # --------------------------------------------------------------------------- #
@@ -333,7 +333,7 @@ def figure_calibration(pgls: pd.DataFrame, traits: pd.DataFrame, Dg: np.ndarray)
     ax.set_axisbelow(True)
     panel_tag(ax, "b")
 
-    save(fig, "figureS4_permutation_calibration")
+    save(fig, "figureS10_lambda_calibration")
 
 
 def main() -> None:

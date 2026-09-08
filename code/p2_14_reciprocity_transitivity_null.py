@@ -176,7 +176,7 @@ def main() -> None:
         ax.grid(axis="y", color="#e5e7eb", linewidth=0.6)
     fig.suptitle(f"{N_DRAWS:,} degree-preserving draws per layer; filled bars significant after BY-FDR "
                  f"within each statistic's family of twelve", fontsize=9.5, y=1.02)
-    save_figure(fig, "p2_14_reciprocity_transitivity_null", FIG_DIR)
+    save_figure(fig, "figureS4_network_nulls", FIG_DIR)
     plt.close(fig)
 
     def named(stat: str, sign: str) -> str:
@@ -205,7 +205,7 @@ must cite this table and no other.
 
 Outputs:
 - p2_14_reciprocity_transitivity_null.csv
-- p2_14_reciprocity_transitivity_null.png
+- figureS4_network_nulls.png
 """
     replace_section(REPORT_PATH, "<!-- P2.14 RESULTS -->", "P2.14 Reciprocity and transitivity nulls", body)
 

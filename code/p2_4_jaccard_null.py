@@ -71,7 +71,7 @@ def main() -> None:
     df["significant_bh"] = reject_bh
     df["p_fdr_by"] = p_by
     df["significant_by"] = reject_by
-    df.to_csv(TABLE_DIR / "p2_4_jaccard_null.csv", index=False)
+    df.to_csv(TABLE_DIR / "tableS2_layer_overlap_full.csv", index=False)
 
     bio_df = df[~df["methodological_confound"]]
 
@@ -139,7 +139,7 @@ Top positive biological z (BY-FDR):
 {dataframe_to_md(bio_df.sort_values('z', ascending=False).head(10), index=False)}
 
 Outputs:
-- p2_4_jaccard_null.csv
+- tableS2_layer_overlap_full.csv
 - p2_4_jaccard_heatmap.png  (* = BY-FDR sig biological, (c) = confound)
 """
     replace_section(REPORT_PATH, "<!-- P2.4 RESULTS -->", "P2.4 Per-layer degree-preserving Jaccard null", body)

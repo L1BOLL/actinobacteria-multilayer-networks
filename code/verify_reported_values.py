@@ -45,7 +45,7 @@ def main() -> None:
     check("IRAC density = 0.091", 0.091, p7.loc["IRAC", "edge_density"], 5e-4)
 
     # ---- §3 / Table 2: overlap ------------------------------------------- #
-    p4 = load("p2_4_jaccard_null.csv")
+    p4 = load("tableS2_layer_overlap_full.csv")
     bio = p4[~p4["methodological_confound"]]
     sig = p4[p4["significant_by"]]
     check("mean J over 66 pairs = 0.047", 0.047, p4["J_obs"].mean(), 5e-4)
@@ -208,7 +208,7 @@ def main() -> None:
     check("dyad IG rho = +0.131", 0.131, md.loc["IG", "mantel_rho"], 5e-4)
     check("dyad IC q = 0.085", 0.085, md.loc["IC", "q_BH"], 5e-4)
 
-    tax = load("p2_13_headline_n56.csv").set_index("quantity")
+    tax = load("tableS4_taxon_sensitivity.csv").set_index("quantity")
 
     def taxrow(sub: str, col: str):
         hits = [i for i in tax.index if sub in i]

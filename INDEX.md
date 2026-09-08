@@ -20,6 +20,7 @@ serve more than one section.
 | 11 | PCA and mixture models | `p2_3_pca12.py`, `p2_2_gmm.py`, `generate_figs.py` | `p2_3_*`, `p2_2_*`, `figure4_*` |
 | 12 | Cross-layer dominance | `p2_11_dominance.py` | `p2_11_*.csv`, `p2_11_dominance.png` |
 | 13 | Spatial decomposition | `p2_9_spatial_decomposition.py` | *skips without per-config data* |
+| 9b | Reciprocity and transitivity nulls | `p2_14_reciprocity_transitivity_null.py` | `p2_14_*` |
 | 14 | Robustness | `p2_2`, `p2_3`, `p2_4`, `p2_7` | columns inside §8 / §11 CSVs |
 | h3 | Phylogenetic signal | `prep_phylogeny.py`, `build_tree.py`, `p2_8_phylogeny_pgls.py` | `p2_8_*`, `p2_8_phylo_signal.png` |
 | — | Metabolism | `p2_12_metabolism.py` | `p2_12_*`, `p2_12_metabolism.png` |
@@ -33,10 +34,10 @@ serve more than one section.
 
 | Claim | Source |
 |---|---|
-| mean J = 0.047 across 66 pairs | `p2_4_jaccard_null.csv`, `mean(J_obs)` |
+| mean J = 0.047 across 66 pairs | `tableS2_layer_overlap_full.csv`, `mean(J_obs)` |
 | CCAM/CCVM confound: J = 0.336, z = +16.2, q_BY = 0.005 | same, that row |
-| 8 over-overlapping biological pairs: IRAC-RAC (+9.2), CCVM-CMP (+8.2), CCAM-CMP (+7.7), CCVM-CS (+6.4), IG-IRAC (+4.8), CCAM-CS (+3.9), CMP-CS (+3.7), CS-RAC (+3.7) | same, `significant_by & z>0 & ~confound` |
-| 1 under-overlapping pair: IAC_RAC-RAC (z = −5.3) | same, `significant_by & z<0` |
+| 8 over-overlapping biological pairs: IRAC-RAC (+9.1), CCVM-CMP (+8.2), CCAM-CMP (+7.7), CCVM-CS (+6.4), IG-IRAC (+4.8), CCAM-CS (+3.9), CMP-CS (+3.7), CS-RAC (+3.6) | same, `significant_by & z>0 & ~confound` |
+| 1 under-overlapping pair: IAC_RAC-RAC (z = −5.2) | same, `significant_by & z<0` |
 
 ### §8 SCC null
 
@@ -74,10 +75,10 @@ serve more than one section.
 | BIC/ICL prefer larger k — small-N over-selection | same |
 | Dip test on PC1/PC2, both embeddings: p > 0.5 | `p2_2_diptest.csv` |
 
-> **The 4-D PCA is computed on z-standardized profiles**, as the Methods specify.
-> Running it on the raw embedding gives 54.2% / 23.3%, which is where the earlier
-> "54.0% / 23.7%" figure axes came from. `generate_figs.py` standardizes at both
-> call sites through `embedding_pca()` so the figures and the text cannot diverge.
+> **The 4-D PCA is computed on z-standardized profiles**, as the Methods specify;
+> on the raw embedding the same PCA gives 54.2% / 23.3% instead. `generate_figs.py`
+> standardizes at both call sites through `embedding_pca()`, so the figures and the
+> text cannot diverge.
 
 ### §12 cross-layer dominance
 
@@ -86,20 +87,34 @@ serve more than one section.
 | mean Spearman of David's score = 0.063 (median 0.043, range [−0.66, +0.62]) | `p2_11_cross_layer_dominance_corr.csv` |
 | 7 of 66 pairs \|ρ\| > 0.5 | same |
 | strongest anti-correlations: IG/RAC −0.66, IAC_RDE/RAC −0.63, IAC_RDE/IRAC −0.58 | same |
-| dominance PCA: PC1 24.3%, PC1+PC2 41.2%; 3 PCs for 50%, 6 for 80% | `supplementary/report.md` §P2.11 |
-| Bradley–Terry and David's score concordant, ρ = 0.59–0.99 (mean 0.87) | `p2_11_bt_strengths_per_layer.csv` |
+| dominance PCA: PC1 24.3%, PC1+PC2 41.2%; 3 PCs for 50%, 6 for 80% | `p2_11_dominance.py`, printed to `supplementary/report.md` §P2.11 (untracked build output) |
+| Bradley–Terry and David's score concordant, ρ = 0.59–0.99 (mean 0.87) | `tableS3_dominance_concordance.csv` |
+
+### §9 reciprocity and transitivity vs the degree-preserving null
+
+| Claim | Source |
+|---|---|
+| 5 layers more reciprocal than expected: IG +6.17, IRAC +4.24, CS +3.10, IAC_RAC +2.82, RAC +2.77 | `p2_14_reciprocity_transitivity_null.csv` |
+| no layer significantly less reciprocal | same |
+| 4 layers less transitive than expected: CS −4.06, RAC −4.10, IG −3.56, CMP −3.34 | same |
+| CCVM transitivity marginal, q = 0.064; RP not significant either way | same |
+| R_p undefined for IRP and IAC_RDE — no mutual dyad in any draw | same |
+
+> These two statistics had no null model before `p2_14`. Any statement about
+> reciprocity or transitivity "relative to degree-preserving expectations" must cite
+> this table and no other.
 
 ### h3 phylogenetic signal
 
 | Claim | Source |
 |---|---|
-| 0 of 21 traits significant on the ML tree (999 tip-label permutations, BH) | `p2_8_pgls.csv` |
+| 0 of 21 traits significant on the ML tree, n = 60 (999 tip-label permutations, BH) | `p2_8_pgls.csv` |
 | 0 of 42 on UPGMA and WPGMA topologies | same |
-| smallest q across all 63 trait × topology tests = 0.47 | same |
-| Mantel, 16S distance vs 12-D profile: ρ = −0.022, p = 0.78 | `p2_8_mantel.csv` |
-| per-category Mantel: \|ρ\| ≤ 0.055, all p > 0.34 | same |
-| ML-tree VCV rank 44 of 59; tip depths span 53× | `p2_8_vcv_diagnostics.csv` |
-| 60 isolates → 38 distinct 16S genotypes; 31 strains in 11 zero-distance groups | `supplementary/report.md` §P2.8 |
+| smallest q across all 63 trait × topology tests = 0.39 | same |
+| Mantel, 16S distance vs 12-D profile: ρ = −0.041, p = 0.59, 1,770 pairs | `p2_8_mantel.csv` |
+| per-category Mantel: \|ρ\| ≤ 0.068, all p > 0.22 | same |
+| ML-tree VCV rank 44 of 60; tip depths span 53× | `p2_8_vcv_diagnostics.csv` |
+| 60 isolates → 38 distinct 16S genotypes; 33 strains (55%) in 11 zero-distance groups | `make_paper_figures.py` panel c, printed to `supplementary/report.md` §P2.8 (untracked build output) |
 
 > **The asymptotic χ² test is not usable on these data.** It returns 7 of 63 tests
 > as significant with λ up to 0.95, but shuffled trait values on the same tree
@@ -125,7 +140,7 @@ serve more than one section.
 
 | Claim | Source |
 |---|---|
-| layer density ordering preserved, Spearman ρ = 1.000 | `p2_13_headline_n56.csv` |
+| layer density ordering preserved, Spearman ρ = 1.000 | `tableS4_taxon_sensitivity.csv` |
 | largest-SCC ordering preserved, ρ = 0.998 | same |
 | components above parallel-analysis null: 3 → 3; CV-optimal k: 1 → 1 | same |
 | 2 of 8 over-overlapping pairs lost at n = 56 (CCAM-CS, CMP-CS) | same, and `p2_13_layer_structure_n56.csv` |
@@ -153,15 +168,18 @@ serve more than one section.
   silhouette}; the cross-validated log-likelihood is the criterion of record.
 - **Phylogenetic inference.** Permutation-based, never asymptotic — see the h3
   note above.
-- **Seed.** `20260522`, in `code/data_io.py`.
+- **Seed.** `20260522`, in `code/data_io.py`. Per-layer draw seeds are taken from
+  that stream in `LAYER_ORDER`, **before** any cache lookup, so a warm cache cannot
+  shift which seeds a layer gets. One caveat applies to RAC — see the top of
+  `PROVENANCE.md`.
 
 ---
 
 ## Outstanding
 
-1. **`S1226` / `S1430`** — one strain is in the interaction matrices, the other in
-   both 16S sources; all 59 others match. Phylogenetic analyses run at n = 59
-   pending confirmation. See `data/annotation/DATA_NOTES.md`.
+1. **`S1226` / `S1430` — resolved.** The two labels denote one isolate; the alias is in
+   `code/data_io.py` and all phylogenetic analyses run at n = 60. See
+   `data/annotation/DATA_NOTES.md`.
 2. **Duplicate `S705A`** in the FASTA (1390 bp and 1468 bp records); the longer is
    kept. If these are two isolates, one needs relabelling before deposition.
 3. **Per-configuration matrices** for §13 — supply `data/matrices_xls_direct/`,

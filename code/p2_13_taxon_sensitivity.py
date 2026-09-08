@@ -85,7 +85,7 @@ def jaccard_null_baseline() -> tuple[int, int] | None:
     2,000-draw copy of the same thing costs ~20 minutes and would compare the
     n=56 result against a *different* baseline than the paper reports.
     """
-    path = TABLE_DIR / "p2_4_jaccard_null.csv"
+    path = TABLE_DIR / "tableS2_layer_overlap_full.csv"
     if not path.exists():
         return None
     df = pd.read_csv(path)
@@ -191,7 +191,7 @@ def main() -> None:
         {"quantity": "Layer density rank correlation n60 vs n56 (Spearman)", "n60": "-", "n56": round(dens_rank_rho, 4)},
         {"quantity": "Largest-SCC rank correlation n60 vs n56 (Spearman)", "n60": "-", "n56": round(scc_rank_rho, 4)},
     ])
-    headline.to_csv(TABLE_DIR / "p2_13_headline_n56.csv", index=False)
+    headline.to_csv(TABLE_DIR / "tableS4_taxon_sensitivity.csv", index=False)
 
     qualitative = (horn60 == horn56) and (k60 == k56) and (under60m == under56) and not gained
     if qualitative and not lost:
@@ -238,7 +238,7 @@ the Results are built on do not depend on the four non-Streptomyces isolates.
 The taxonomy wording in the title, abstract and Methods still needs correcting -
 see `data/annotation/DATA_NOTES.md`.
 
-Outputs: `p2_13_headline_n56.csv`, `p2_13_layer_structure_n56.csv`
+Outputs: `tableS4_taxon_sensitivity.csv`, `p2_13_layer_structure_n56.csv`
 """
     replace_section(REPORT_PATH, "<!-- P2.13 RESULTS -->", "P2.13 Taxon sensitivity (n=56, Streptomyces only)", body)
 
