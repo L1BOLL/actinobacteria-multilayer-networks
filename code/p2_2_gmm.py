@@ -17,7 +17,7 @@ from sklearn.mixture import GaussianMixture
 from sklearn.model_selection import KFold
 from sklearn.preprocessing import StandardScaler
 
-from data_io import CATEGORY_MAP, FIG_DIR, REPORT_PATH, SEED, TABLE_DIR, compute_out_degree_matrix, ensure_phase2_dirs, load_or_recompute_embedding4, load_tensor
+from data_io import save_figure, CATEGORY_MAP, FIG_DIR, REPORT_PATH, SEED, TABLE_DIR, compute_out_degree_matrix, ensure_phase2_dirs, load_or_recompute_embedding4, load_tensor
 from report_utils import dataframe_to_md, replace_section
 
 
@@ -214,7 +214,7 @@ def main() -> None:
                 for strain in pd.Index(df.index)[labels == cidx]:
                     membership_rows.append({"embedding": name, "covariance": cov, "k_used": int(k_icl), "cluster": cidx, "strain": strain})
 
-    fig.savefig(FIG_DIR / "p2_2_bic_curves.png", dpi=300, bbox_inches="tight")
+    save_figure(fig, "p2_2_bic_curves", FIG_DIR)
     plt.close(fig)
 
     bic_df = pd.DataFrame(records)

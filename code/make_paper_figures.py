@@ -34,7 +34,7 @@ from scipy.spatial.distance import pdist, squareform
 from scipy.sparse.csgraph import connected_components
 from scipy.stats import spearmanr
 
-from data_io import CATEGORY_MAP, FIG_DIR, LAYER_ORDER, SEED, canonical_strain, ensure_phase2_dirs, load_tensor
+from data_io import FIGURE_FORMATS, save_figure, CATEGORY_MAP, FIG_DIR, LAYER_ORDER, SEED, canonical_strain, ensure_phase2_dirs, load_tensor
 from p2_8_phylogeny_pgls import (
     N_PERM,
     build_traits,
@@ -97,10 +97,9 @@ def panel_tag(ax, letter: str) -> None:
 
 
 def save(fig, stem: str) -> None:
-    for ext in ("png", "pdf"):
-        fig.savefig(FIG_DIR / f"{stem}.{ext}", bbox_inches="tight", facecolor="white")
+    save_figure(fig, stem, FIG_DIR)
     plt.close(fig)
-    print(f"  wrote {stem}.png / .pdf")
+    print(f"  wrote {stem}.{{{'/'.join(FIGURE_FORMATS)}}}")
 
 
 # --------------------------------------------------------------------------- #

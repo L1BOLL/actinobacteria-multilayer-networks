@@ -1,0 +1,11 @@
+Pair,Categories,J_obs,J_null mean,z,BY q,Direction,Phenotypic interpretation
+CCAM–CCVM †,MC–MC,0.336,0.129,+16.19,4.5×10^-3^,over,"Coupled aerial/vegetative pigmentation; scored from the same colonies, so reported separately"
+IRAC–RAC,IA–DA,0.166,0.133,+9.07,4.5×10^-3^,over,Inhibition and release act on the same antimicrobial axis
+CCVM–CMP,MC–MC,0.108,0.047,+8.23,4.5×10^-3^,over,Vegetative pigmentation co-varies with mycelial production
+CCAM–CMP,MC–MC,0.121,0.053,+7.69,4.5×10^-3^,over,Aerial-mycelium colour with mycelial production; shared assay context precludes attributing this to one pathway
+CCVM–CS,MC–MC,0.062,0.025,+6.41,4.5×10^-3^,over,Pigment biosynthesis tied to the developmental transition into aerial growth
+IG–IRAC,DA–IA,0.092,0.065,+4.82,4.5×10^-3^,over,Growth inhibition with suppression of antimicrobial release; biological coupling and shared assay covariance are not separable here
+CCAM–CS,MC–MC,0.046,0.023,+3.86,0.019,over,"Aerial pigmentation and sporulation, both downstream of the same developmental switch"
+CMP–CS,MC–MC,0.115,0.081,+3.68,0.019,over,Mycelium production and sporulation: joint output of the developmental cascade
+CS–RAC,MC–DA,0.093,0.085,+3.60,0.012,over,"Sporulation response co-occurs with antimicrobial release, consistent with competition sensing"
+IAC_RAC–RAC,IA–DA,0.104,0.125,-5.22,4.5×10^-3^,under,Induced and constitutive release avoid the same dyads: a strain needing induction is typically not also a constitutive producer toward that target

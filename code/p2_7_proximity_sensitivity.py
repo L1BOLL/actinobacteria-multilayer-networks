@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from data_io import FIG_DIR, REPORT_PATH, SEED, TABLE_DIR, ensure_phase2_dirs, load_tensor
+from data_io import save_figure, FIG_DIR, REPORT_PATH, SEED, TABLE_DIR, ensure_phase2_dirs, load_tensor
 from report_utils import dataframe_to_md, replace_section
 
 
@@ -82,7 +82,7 @@ def main() -> None:
     axes[1].grid(axis="y", color="#e5e7eb", linewidth=0.6)
     axes[1].set_axisbelow(True)
     axes[1].legend(frameon=False, fontsize=9)
-    fig.savefig(FIG_DIR / "p2_7_proximity_density.png", dpi=300, bbox_inches="tight")
+    save_figure(fig, "p2_7_proximity_density", FIG_DIR)
     plt.close(fig)
 
     D = 1e-6

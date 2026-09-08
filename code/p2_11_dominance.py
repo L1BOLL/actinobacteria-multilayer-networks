@@ -15,7 +15,7 @@ from scipy.stats import spearmanr
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
-from data_io import FIG_DIR, REPORT_PATH, SEED, TABLE_DIR, ensure_phase2_dirs, load_tensor
+from data_io import save_figure, FIG_DIR, REPORT_PATH, SEED, TABLE_DIR, ensure_phase2_dirs, load_tensor
 from report_utils import dataframe_to_md, replace_section
 
 
@@ -106,7 +106,7 @@ def main() -> None:
     axes[1].set_title("PCA of layer-specific dominance")
     axes[1].legend(frameon=False)
     axes[1].grid(axis="y", color="#e5e7eb", linewidth=0.5)
-    fig.savefig(FIG_DIR / "p2_11_dominance.png", dpi=300, bbox_inches="tight")
+    save_figure(fig, "p2_11_dominance", FIG_DIR)
     plt.close(fig)
 
     off_diag = corr[np.triu_indices_from(corr, k=1)]

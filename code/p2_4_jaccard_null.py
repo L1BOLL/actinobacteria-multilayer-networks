@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 from statsmodels.stats.multitest import fdrcorrection
 
-from data_io import FIG_DIR, REPORT_PATH, SEED, TABLE_DIR, ensure_phase2_dirs, layer_groups, load_tensor
+from data_io import save_figure, FIG_DIR, REPORT_PATH, SEED, TABLE_DIR, ensure_phase2_dirs, layer_groups, load_tensor
 from null_models import generate_degree_preserving_nulls
 from report_utils import dataframe_to_md, replace_section
 
@@ -110,7 +110,7 @@ def main() -> None:
             ax.text(j, i, f"{val:.1f}{mark}", ha="center", va="center", fontsize=6.8, color="#111827")
     cbar = fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
     cbar.set_label("Jaccard z-score")
-    fig.savefig(FIG_DIR / "p2_4_jaccard_heatmap.png", dpi=300, bbox_inches="tight")
+    save_figure(fig, "p2_4_jaccard_heatmap", FIG_DIR)
     plt.close(fig)
 
     cc = df[((df["layer1"] == "CCAM") & (df["layer2"] == "CCVM")) | ((df["layer1"] == "CCVM") & (df["layer2"] == "CCAM"))]

@@ -15,7 +15,7 @@ from scipy.stats import spearmanr
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 
-from data_io import FIG_DIR, REPORT_PATH, SEED, TABLE_DIR, compute_out_degree_matrix, ensure_phase2_dirs, load_or_recompute_embedding4, load_tensor
+from data_io import save_figure, FIG_DIR, REPORT_PATH, SEED, TABLE_DIR, compute_out_degree_matrix, ensure_phase2_dirs, load_or_recompute_embedding4, load_tensor
 from report_utils import dataframe_to_md, replace_section
 
 
@@ -115,7 +115,7 @@ def main() -> None:
     ax.set_title("12D out-degree PCA scree, bootstrap CI, parallel-analysis null")
     ax.grid(axis="y", color="#e5e7eb", linewidth=0.6)
     ax.legend(frameon=False)
-    fig.savefig(FIG_DIR / "p2_3_pca12_scree.png", dpi=300, bbox_inches="tight")
+    save_figure(fig, "p2_3_pca12_scree", FIG_DIR)
     plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(7.5, 6.0))
@@ -132,7 +132,7 @@ def main() -> None:
     ax.set_ylabel(f"PC2 ({pca12.explained_variance_ratio_[1]*100:.1f}% var.)")
     ax.set_title("12D out-degree PCA biplot")
     ax.grid(color="#e5e7eb", linewidth=0.6)
-    fig.savefig(FIG_DIR / "p2_3_pca12_biplot.png", dpi=300, bbox_inches="tight")
+    save_figure(fig, "p2_3_pca12_biplot", FIG_DIR)
     plt.close(fig)
 
     pc1_var12 = pca12.explained_variance_ratio_[0]

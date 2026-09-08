@@ -435,7 +435,9 @@ def main() -> None:
     identity = pd.read_csv(identity_path).rename(columns={'Unnamed: 0': 'strain'}) if identity_path.exists() else build_ecological_identity(matrices)
     make_figure_2(matrices, stats_df)
     make_figure_3(matrices)
-    make_figure_4(embeddings, identity)
+    # make_figure_4 is retired: it colours strains by mixture assignment, which
+    # contradicts the reported conclusion that no discrete clusters are supported.
+    # code/figure_4_strategy.py supersedes it and colours by a continuous quantity.
     make_figure_5(matrices, identity)
     make_embedding_representation_figure(embeddings, identity)
     write_manifest(stats_df)

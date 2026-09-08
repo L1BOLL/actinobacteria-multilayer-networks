@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 from statsmodels.stats.multitest import fdrcorrection
 
-from data_io import FIG_DIR, REPORT_PATH, SEED, TABLE_DIR, ensure_phase2_dirs, load_tensor
+from data_io import save_figure, FIG_DIR, REPORT_PATH, SEED, TABLE_DIR, ensure_phase2_dirs, load_tensor
 from null_models import generate_degree_preserving_nulls
 from report_utils import dataframe_to_md, replace_section
 
@@ -58,7 +58,7 @@ def main() -> None:
     ax.set_title(f"Largest SCC vs degree-preserving null ({N_DRAWS} draws)")
     ax.grid(axis="y", color="#e5e7eb", linewidth=0.6)
     ax.legend(frameon=False)
-    fig.savefig(FIG_DIR / "p2_5_scc_null.png", dpi=300, bbox_inches="tight")
+    save_figure(fig, "p2_5_scc_null", FIG_DIR)
     plt.close(fig)
 
     exceeds = df[(df["z"] > 0) & (df["p_fdr_by"] < 0.05)]["layer"].tolist()

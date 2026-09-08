@@ -32,8 +32,14 @@ STAGES = [
     "p2_11_dominance.py",
     "p2_12_metabolism.py",
     "p2_13_taxon_sensitivity.py",
+    "p2_14_reciprocity_transitivity_null.py",
     "generate_figs.py",
     "make_paper_figures.py",
+    "figure_2_spatial.py",
+    "figure_3_overlap.py",
+    "figure_4_strategy.py",
+    "tables_1_2.py",
+    "verify_reported_values.py",
 ]
 
 
