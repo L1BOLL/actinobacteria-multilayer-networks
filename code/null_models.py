@@ -58,6 +58,13 @@ def generate_degree_preserving_nulls(
     would silently load the full-cohort nulls whose node count no longer matches.
     """
     rng = np.random.default_rng(seed)
+    # Every layer's seeds are drawn up front, in LAYER_ORDER, before any cache
+    # lookup. Consuming the stream inside the loop instead would let a cached
+    # layer shift the seeds of the layers after it, so a partially warm cache
+    # would silently produce different draws from a cold run.
+    layer_seeds = {
+        layer: rng.integers(0, 2**31 - 1, size=n_draws) for layer in LAYER_ORDER
+    }
     out = {}
     for idx, layer in enumerate(LAYER_ORDER):
         A = tensor[idx].astype(np.uint8)
@@ -67,7 +74,7 @@ def generate_degree_preserving_nulls(
             continue
         draws = np.zeros((n_draws, A.shape[0], A.shape[1]), dtype=np.uint8)
         for d in range(n_draws):
-            draws[d] = _randomize_layer_once(A, int(rng.integers(0, 2**31 - 1)))
+            draws[d] = _randomize_layer_once(A, int(layer_seeds[layer][d]))
             if (d + 1) % 100 == 0:
                 print(f"[null_models] {layer}: generated {d + 1}/{n_draws} nulls", flush=True)
         out[layer] = draws
