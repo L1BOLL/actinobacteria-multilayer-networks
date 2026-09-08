@@ -1,5 +1,5 @@
 fasta_header,strain,genus,length_bp,in_interaction_matrix,kept,note
-Streptomyces sp. strain S1430,S1430,Streptomyces,1485,False,True,no interaction matrix
+Streptomyces sp. strain S1430,S1226,Streptomyces,1485,True,True,
 Streptomyces sp. strain B201,B201,Streptomyces,1376,True,True,
 Saccharothrix strain MS53 7,MS53 7,Saccharothrix,1440,True,True,non-Streptomyces (Saccharothrix)
 Streptomyces sp. strain B213,B213,Streptomyces,1418,True,True,

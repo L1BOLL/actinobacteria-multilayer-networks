@@ -7,6 +7,7 @@ Three annotation files join to the 60-strain interaction matrices:
 | `16S_strepto_R` | 61 FASTA records, near-full-length 16S | 59 / 60 after cleaning |
 | `distance_matrix.xlsx` | 1770 = C(60,2) pairwise 16S distances, complete | 59 / 60 |
 | `atb_profile.xlsx` | 60 × 9 carbohydrate assimilation, graded 0–4 | **60 / 60** |
+| `list_accession_submission.ods` | 60 GenBank submission records, PZ882263–PZ882322 | 59 / 60 |
 
 Strain labels are folded to a shared key space by `data_io.canonical_strain()`
 (strips non-breaking spaces and apostrophes, then applies `STRAIN_ALIASES`).
@@ -17,20 +18,34 @@ Strain labels are folded to a shared key space by `data_io.canonical_strain()`
 
 ## OPEN — needs an author decision
 
-### 1. `S1226` vs `S1430`
+### 1. `S1226` vs `S1430` — RESOLVED, applied 2026-09-07
 
-`S1226` is present in the interaction matrices but in neither 16S source.
-`S1430` is present in both 16S sources but in no interaction matrix.
-Every other one of the 59 remaining strains matches exactly after normalization.
+**The two labels are one isolate.** `S1430` is the sequencing-record label for the
+strain the interaction matrices call `S1226`; the alias `"S1430": "S1226"` is in
+`code/data_io.py :: STRAIN_ALIASES` and every phylogeny-linked analysis now runs at
+**n = 60**.
 
-This looks like one isolate renamed between the bench work and the sequencing,
-but it has **not been assumed**. All phylogeny-linked analyses run at **n = 59**
-with both labels excluded. The carbohydrate analysis is unaffected and runs at
-n = 60.
+Three independent sources of 60 records each agreed, differing only on this label:
+the 16S FASTA, `distance_matrix.xlsx`, and the GenBank submission record
+`list_accession_submission.ods` (Seq01, accession PZ882263). Supplementary Table S1
+presents them as one strain, listing Seq01 under the main-text label `S1226` and
+noting in its caption that the submission record writes `S1430`. The authors
+confirmed the rename.
 
-**If the authors confirm S1226 = S1430**, add `"S1430": "S1226"` to
-`STRAIN_ALIASES` in `phase2_code/data_io.py` and re-run; every downstream script
-picks it up and n becomes 60. Nothing else changes.
+What changed when the alias was applied:
+
+| | n = 59 (before) | n = 60 (now) |
+|---|---|---|
+| tree tips | 59 | 60 |
+| Mantel pairs | 1,711 | 1,770 |
+| Mantel rho / P | −0.022 / 0.78 | −0.041 / 0.59 |
+| minimum q over 63 tests | 0.47 | 0.39 |
+| genotype collapse | 59 → 38, 31 shared (53%) | 60 → 38, 33 shared (55%) |
+| ML VCV rank | 44 of 59 | 44 of 60 |
+
+Conclusions did not change: still 0 of 21 traits significant on the ML tree and
+0 of 42 on UPGMA/WPGMA. `prep_phylogeny.py` now reports no unmatched label on
+either side. To reverse, remove the alias and re-run `run_all.py`.
 
 ### 2. Four strains are not *Streptomyces*
 

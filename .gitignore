@@ -13,7 +13,3 @@ __pycache__/
 .DS_Store
 *report.md
 Thumbs.db
-
-# supplementary/report.md is intentionally NOT ignored: it is the generated run
-# summary, INDEX.md cites it, and it lets a reader see the results without a
-# two-hour run.

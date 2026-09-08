@@ -1,8 +1,8 @@
 Tree provenance (regenerate with: python phase2_code/build_tree.py --force)
 
-sequences  : 59 (from 16S_clean.fasta)
+sequences  : 60 (from 16S_clean.fasta)
 alignment  : MAFFT (pymafft, fftnsi, maxiterate=1000)
-trimming   : trimAl gappyout: 1530 -> 1337 columns
+trimming   : trimAl gappyout: 1533 -> 1337 columns
 inference  : VeryFastTree -nt -gtr -gamma (FastTree-2 equivalent ML, GTR+GAMMA)
 seed       : 20260522
 

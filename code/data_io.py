@@ -55,6 +55,12 @@ STRAIN_ALIASES = {
     "S625'": "S625",
     "S713'v": "S713'V",
     "S713'w": "S713'W",
+    # S1430 is the sequencing-record label for the isolate the interaction
+    # matrices call S1226. Confirmed by the authors against the submission record
+    # (youssef_prop/bn_tables.xlsx, sheet SuppTableS1_strains, caption). Before
+    # this was confirmed, every phylogenetic analysis ran at n=59 with both labels
+    # dropped; it now runs at n=60. See data/annotation/DATA_NOTES.md.
+    "S1430": "S1226",
 }
 
 # Canonical form used to join the interaction matrices to the annotation data
@@ -187,3 +193,17 @@ def layer_groups() -> dict[str, str]:
         for layer in layers:
             out[layer] = group
     return out
+
+
+# Figure output formats. PNG for review and for pasting into slide decks, SVG for
+# typesetting. No PDF: it duplicates SVG, and journals that want vector take SVG or
+# EPS. Every figure-producing script goes through this, so the set is consistent.
+FIGURE_FORMATS = ("png", "svg")
+
+
+def save_figure(fig, stem: str, outdir=None) -> None:
+    """Write a figure to FIG_DIR (or outdir) once per format in FIGURE_FORMATS."""
+    target = FIG_DIR if outdir is None else outdir
+    target.mkdir(parents=True, exist_ok=True)
+    for ext in FIGURE_FORMATS:
+        fig.savefig(target / f"{stem}.{ext}", dpi=300, bbox_inches="tight", facecolor="white")
