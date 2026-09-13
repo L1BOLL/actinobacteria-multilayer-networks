@@ -1,4 +1,4 @@
-# Degree-preserving null draws: ~570 MB across 12 layers, fully regenerable from
+# Degree-preserving null draws: ~780 MB across 12 layers, fully regenerable from
 # SEED in code/data_io.py. Never commit these; run_all.py rebuilds them.
 .cache/
 
@@ -13,3 +13,5 @@ __pycache__/
 .DS_Store
 *report.md
 Thumbs.db
+
+PROVENANCE.md

@@ -11,7 +11,7 @@ Three annotation files join to the 60-strain interaction matrices:
 
 Strain labels are folded to a shared key space by `data_io.canonical_strain()`
 (strips non-breaking spaces and apostrophes, then applies `STRAIN_ALIASES`).
-`phase2_code/prep_phylogeny.py` writes a per-record audit to
+`code/prep_phylogeny.py` writes a per-record log to
 `data/phylogeny/label_map.csv`.
 
 ---
@@ -61,7 +61,7 @@ Parsed from the FASTA descriptions, all four are in the interaction set:
 The manuscript title and abstract say "soil *Streptomyces* communities" and
 "60 soil-derived *Streptomyces* strains". Both need correcting to
 "60 soil actinobacteria (56 *Streptomyces*, plus *Saccharothrix*, *Lentzea* ×2,
-*Amycolatopsis*)". `phase2_code/p2_13_taxon_sensitivity.py` re-runs the headline
+*Amycolatopsis*)". `code/taxon_sensitivity.py` re-runs the headline
 analyses without these four so the paper can state that no conclusion depends on
 them.
 

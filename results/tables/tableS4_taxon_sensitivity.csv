@@ -1,0 +1,10 @@
+quantity,n60,n56
+"Jaccard null: over-overlapping pairs, published 10,000 draws",8,-
+"Jaccard null: over-overlapping pairs, matched 10,000 draws",8,6
+"Jaccard null: under-overlapping pairs, matched 10,000 draws",1,1
+12-D PCA PC1 (% variance),32.5,31.2
+12-D PCA PC2 (% variance),17.3,15.2
+PCs above Horn parallel-analysis null,2,2
+"GMM components by 10-fold CV log-likelihood (12-D, full cov)",1,1
+Layer density rank correlation n60 vs n56 (Spearman),-,1.0
+Largest-SCC rank correlation n60 vs n56 (Spearman),-,0.9982

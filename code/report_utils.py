@@ -5,12 +5,12 @@ import pandas as pd
 
 
 def replace_section(report_path: Path, sentinel: str, heading: str, body_md: str) -> None:
-    """Replace content from ``sentinel`` up to the next ``<!-- P2.X RESULTS -->``."""
+    """Replace content from ``sentinel`` up to the next the next section marker."""
     text = report_path.read_text(encoding="utf-8")
     section = f"{sentinel}\n\n## {heading}\n\n{body_md.strip()}\n"
     if sentinel in text:
         head, tail = text.split(sentinel, 1)
-        next_marker = tail.find("\n<!-- P2.")
+        next_marker = tail.find("\n<!-- ")
         if next_marker != -1:
             remainder = tail[next_marker + 1 :]
         else:

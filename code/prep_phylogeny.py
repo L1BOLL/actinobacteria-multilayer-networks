@@ -23,7 +23,7 @@ Path(os.environ["MPLCONFIGDIR"]).mkdir(parents=True, exist_ok=True)
 
 import pandas as pd
 
-from data_io import ROOT, canonical_strain, ensure_phase2_dirs, load_tensor
+from data_io import ROOT, canonical_strain, ensure_output_dirs, load_tensor
 
 FASTA_IN = ROOT / "data" / "annotation" / "16S_strepto_R"
 PHYLO_DIR = ROOT / "data" / "phylogeny"
@@ -31,7 +31,7 @@ FASTA_OUT = PHYLO_DIR / "16S_clean.fasta"
 LABEL_MAP = PHYLO_DIR / "label_map.csv"
 
 # Genus is parsed from the FASTA description; these four are not Streptomyces and
-# drive the taxonomy wording fix plus the n=56 sensitivity re-run (p2_13).
+# drive the taxonomy wording fix plus the n=56 sensitivity re-run (taxon_sensitivity).
 NON_STREPTOMYCES = {"Saccharothrix", "Lentzea", "Amycolatopsis"}
 
 VALID_DNA = set("ACGTRYSWKMBDHVN")
@@ -71,7 +71,7 @@ def parse_label(header: str) -> tuple[str, str]:
 
 
 def main() -> None:
-    ensure_phase2_dirs()
+    ensure_output_dirs()
     PHYLO_DIR.mkdir(parents=True, exist_ok=True)
 
     _, _, node_ids = load_tensor()

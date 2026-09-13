@@ -54,7 +54,7 @@ def generate_degree_preserving_nulls(
     """Degree-preserving null draws per layer, cached on disk.
 
     ``prefix`` namespaces the cache. Any analysis run on a *subset* of strains
-    (e.g. the n=56 taxon sensitivity in p2_13) must pass its own prefix, or it
+    (e.g. the n=56 taxon sensitivity in taxon_sensitivity) must pass its own prefix, or it
     would silently load the full-cohort nulls whose node count no longer matches.
     """
     rng = np.random.default_rng(seed)

@@ -141,7 +141,7 @@ def main() -> None:
     print(f"  {tree_note}")
 
     PROVENANCE.write_text(
-        "Tree provenance (regenerate with: python phase2_code/build_tree.py --force)\n\n"
+        "Tree provenance (regenerate with: python code/build_tree.py --force)\n\n"
         f"sequences  : {n_seq} (from {FASTA_IN.name})\n"
         f"alignment  : {aligner_note}\n"
         f"trimming   : {trim_note}\n"
@@ -149,7 +149,7 @@ def main() -> None:
         f"seed       : {SEED}\n\n"
         "These are the tool names that must appear in the manuscript Methods.\n"
         "If the coauthor supplies a MAFFT + RAxML tree, overwrite tree.nwk and\n"
-        "update this file; p2_8_phylogeny_pgls.py consumes it unchanged.\n",
+        "update this file; phylogenetic_signal.py consumes it unchanged.\n",
         encoding="utf-8",
     )
     print(f"wrote {TREE_OUT.relative_to(ROOT)}")

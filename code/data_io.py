@@ -12,20 +12,19 @@ Path(os.environ["MPLCONFIGDIR"]).mkdir(parents=True, exist_ok=True)
 import numpy as np
 import pandas as pd
 
-from source_paths import CACHE_DIR, EMBEDDING_CSV, FROZEN_ROOT, SUPPLEMENTARY_DIR, find_layer_file
+from source_paths import CACHE_DIR, EMBEDDING_CSV, FROZEN_ROOT, RESULTS_DIR, find_layer_file
 
 SEED = 20260522
 ROOT = FROZEN_ROOT
 
-# Everything a reader of the paper needs lands in supplementary/ and is committed.
-PHASE2 = SUPPLEMENTARY_DIR
-FIG_DIR = PHASE2 / "figures"
-TABLE_DIR = PHASE2 / "tables"
-REPORT_PATH = PHASE2 / "report.md"
-CONTRADICTIONS_PATH = PHASE2 / "contradictions.md"
+# Everything a reader of the paper needs lands in results/ and is committed.
+OUTPUT_DIR = RESULTS_DIR
+FIG_DIR = OUTPUT_DIR / "figures"
+TABLE_DIR = OUTPUT_DIR / "tables"
+REPORT_PATH = OUTPUT_DIR / "report.md"
 
 # Null-model draws total ~570 MB and are fully regenerable from SEED, so they are
-# cached outside supplementary/ and excluded from version control.
+# cached outside results/ and excluded from version control.
 DATA_DIR = CACHE_DIR
 
 LAYER_FILES = {
@@ -76,36 +75,36 @@ def canonical_strain(name: object) -> str:
 
 
 REPORT_SECTIONS = [
-    ("P2.2", "Cluster vs continuum"),
-    ("P2.3", "PCA on 12D out-degree space"),
-    ("P2.4", "Per-layer degree-preserving Jaccard null"),
-    ("P2.5", "SCC null test"),
-    ("P2.7", "Per-layer connectivity descriptors"),
-    ("P2.8", "Phylogenetic signal (PGLS)"),
-    ("P2.9", "Spatial decomposition (3 configurations)"),
-    ("P2.10", "Direction-convention audit"),
-    ("P2.11", "Dominance: per-layer and cross-layer"),
-    ("P2.12", "Metabolic niche overlap and layer-specific interactions"),
-    ("P2.13", "Taxon sensitivity (n=56, Streptomyces only)"),
+    ("mixture_models", "Discrete groups versus a continuum"),
+    ("ordination", "Principal components of the 12-layer out-degree profile"),
+    ("layer_overlap", "Cross-layer overlap against a degree-preserving null"),
+    ("connectivity", "Strongly connected components against the same null"),
+    ("layer_descriptors", "Per-layer connectivity descriptors"),
+    ("phylogenetic_signal", "Phylogenetic signal"),
+    ("directionality", "Edge-direction convention"),
+    ("dominance", "Directional influence, per layer and across layers"),
+    ("metabolic_niche", "Metabolic niche and network position"),
+    ("taxon_sensitivity", "Sensitivity to the non-Streptomyces isolates"),
+    ("reciprocity_transitivity", "Reciprocity and transitivity against the null"),
 ]
 
 
-def ensure_phase2_dirs() -> None:
+def ensure_output_dirs() -> None:
     """Create output dirs and make sure every report sentinel exists.
 
-    Every stage calls this at start-up. It must therefore *not* rewrite the
-    report wholesale: doing so meant whichever stage ran last erased the sections
-    all the earlier stages had just written, which is why `phase2_report.md`
+    Every stage calls this at start-up, so it must not rewrite the report
+    wholesale: that would let whichever stage ran last erase the sections the
+    earlier stages had just written, which is why the report
     only ever contained one populated section. Missing sentinels are appended;
     existing content is left alone, and `report_utils.replace_section` overwrites
     only the section it owns.
     """
-    for path in [PHASE2, FIG_DIR, TABLE_DIR, DATA_DIR]:
+    for path in [OUTPUT_DIR, FIG_DIR, TABLE_DIR, DATA_DIR]:
         path.mkdir(parents=True, exist_ok=True)
 
-    text = REPORT_PATH.read_text(encoding="utf-8") if REPORT_PATH.exists() else "# Phase 2 Report\n"
+    text = REPORT_PATH.read_text(encoding="utf-8") if REPORT_PATH.exists() else "# Analysis report\n"
     if not text.strip():
-        text = "# Phase 2 Report\n"
+        text = "# Analysis report\n"
     for code, title in REPORT_SECTIONS:
         sentinel = f"<!-- {code} RESULTS -->"
         if sentinel not in text:
@@ -114,8 +113,6 @@ def ensure_phase2_dirs() -> None:
             text += f"\n{sentinel}\n\n## {code} {title}\n\n"
     REPORT_PATH.write_text(text, encoding="utf-8")
 
-    if not CONTRADICTIONS_PATH.exists():
-        CONTRADICTIONS_PATH.write_text("# Contradictions Log\n", encoding="utf-8")
 
 
 def load_layer_df(path: Path) -> pd.DataFrame:
@@ -198,7 +195,7 @@ def layer_groups() -> dict[str, str]:
 # Figure output formats. PNG for review and for pasting into slide decks, SVG for
 # typesetting. No PDF: it duplicates SVG, and journals that want vector take SVG or
 # EPS. Every figure-producing script goes through this, so the set is consistent.
-FIGURE_FORMATS = ("png", "svg")
+FIGURE_FORMATS = ("png", "svg", "pdf")  # pdf for journals that will not take svg
 
 
 def save_figure(fig, stem: str, outdir=None) -> None:
