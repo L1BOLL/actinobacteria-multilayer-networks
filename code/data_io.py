@@ -86,6 +86,7 @@ REPORT_SECTIONS = [
     ("metabolic_niche", "Metabolic niche and network position"),
     ("taxon_sensitivity", "Sensitivity to the non-Streptomyces isolates"),
     ("reciprocity_transitivity", "Reciprocity and transitivity against the null"),
+    ("spatial_configuration", "Spatial configuration: close proximity versus separation"),
 ]
 
 

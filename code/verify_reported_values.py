@@ -273,6 +273,41 @@ def main() -> None:
     check("draw-matched depleted pairs 1 -> 1", ("1", "1"),
           (str(taxrow("under-overlapping pairs, matched", "n60")),
            str(taxrow("under-overlapping pairs, matched", "n56"))))
+
+    # ---- §9 / Figure 6: spatial configuration ---------------------------- #
+    sp = load("spatial_configuration.csv").set_index("layer")
+    check("IG close-proximity edges = 785", 785, int(sp.loc["IG", "edges_close"]))
+    check("IG separated edges = 261", 261, int(sp.loc["IG", "edges_separated"]))
+    check("IG density 0.222 -> 0.074", (0.222, 0.074),
+          (round(float(sp.loc["IG", "density_close"]), 3), round(float(sp.loc["IG", "density_separated"]), 3)))
+    check("IG delta density = 0.148", 0.148, sp.loc["IG", "density_difference"], 5e-4)
+    check("IG delta 95% CI 0.136-0.160", (0.136, 0.160),
+          (round(float(sp.loc["IG", "ci_low"]), 3), round(float(sp.loc["IG", "ci_high"]), 3)))
+    check("IG persistent/lost/gained 249/536/12", (249, 536, 12),
+          tuple(int(sp.loc["IG", k]) for k in ("persistent", "lost", "gained")))
+    check("IG loss:gain OR = 44.67", 44.67, sp.loc["IG", "odds_loss_vs_gain"], 5e-3)
+    check("IG dyad-randomisation P < 1e-4", True, bool(sp.loc["IG", "p_paired_dyad_permutation"] <= 1e-4))
+    check("CS close-proximity edges = 144", 144, int(sp.loc["CS", "edges_close"]))
+    check("CS separated edges = 133", 133, int(sp.loc["CS", "edges_separated"]))
+    check("CS delta density = 0.0031", 0.0031, sp.loc["CS", "density_difference"], 5e-5)
+    check("CS persistent/lost/gained 59/85/74", (59, 85, 74),
+          tuple(int(sp.loc["CS", k]) for k in ("persistent", "lost", "gained")))
+    check("CS loss:gain OR = 1.15", 1.15, sp.loc["CS", "odds_loss_vs_gain"], 5e-3)
+    check("CS dyad-randomisation P = 0.433", 0.433, sp.loc["CS", "p_paired_dyad_permutation"], 5e-3)
+    check("spatial IG differs from main IG in 650 entries", 650, int(sp.loc["IG", "entries_differing_from_main_layer"]))
+    check("spatial CS differs from main CS in 291 entries", 291, int(sp.loc["CS", "entries_differing_from_main_layer"]))
+
+    # ---- §6: what the IG-RAC dominance correlation means ------------------ #
+    from scipy.stats import spearmanr
+    from data_io import load_tensor
+    tensor, layer_ids, node_ids = load_tensor()
+    ds = load("dominance_davids_scores.csv").set_index(load("dominance_davids_scores.csv").columns[0])
+    ds = ds.loc[node_ids]
+    rac_release = tensor[layer_ids.index("RAC")].sum(axis=1)   # rows = strain scored = releasing strain
+    ig_out = tensor[layer_ids.index("IG")].sum(axis=0)         # columns = sender = inhibitor
+    check("DS IG vs DS RAC rho = -0.66", -0.66, spearmanr(ds["IG"], ds["RAC"]).statistic, 5e-3)
+    check("DS RAC vs RAC release count rho = -0.97", -0.97, spearmanr(ds["RAC"], rac_release).statistic, 5e-3)
+    check("IG out-degree vs RAC release count rho = +0.75", 0.75, spearmanr(ig_out, rac_release).statistic, 5e-3)
     check("n56 PC1 = 31.2%", "31.2", str(taxrow("PC1 (% variance)", "n56")))
     check("n56 PC2 = 15.2%", "15.2", str(taxrow("PC2 (% variance)", "n56")))
 

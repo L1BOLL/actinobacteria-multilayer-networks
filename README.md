@@ -38,6 +38,7 @@ run_all.py     runs every stage in order
 | `phylogenetic_signal.py` | Pagel's lambda by tip-label permutation, and Mantel tests |
 | `metabolic_niche.py` | carbohydrate assimilation against network position |
 | `taxon_sensitivity.py` | every headline result without the four non-Streptomyces isolates |
+| `spatial_configuration.py` | IG and CS with the inocula close versus separated, from the paired spatial matrices |
 | `tables_1_2.py` | Tables 1 and 2 |
 | `figure_*.py`, `figures_*.py` | the manuscript figures |
 | `verify_reported_values.py` | recomputes every number the manuscript states and compares |
@@ -53,7 +54,9 @@ must transpose, or every directed result reverses.
 ## Data
 
 `data/matrices_xls/` holds one spreadsheet per phenotype, 60 x 60, one row and
-column per isolate. `data/annotation/` holds the 16S records, the pairwise
-distance matrix and the API assimilation profiles. `data/plates/` holds the plate
-photographs behind Figure 1. Strain labels differ slightly between sources; they
+column per isolate. `data/matrices_spatial/` holds the four matrices of the paired
+spatial experiment (IG and CS, each scored with the inocula close and separated);
+they are a separate scoring and are never merged with the twelve layers.
+`data/annotation/` holds the 16S records, the pairwise distance matrix and the API assimilation profiles. `data/plates/` holds the plate
+photographs behind Figure 1 and the plate montage behind Figure S13. Strain labels differ slightly between sources; they
 are folded to a single key space by `canonical_strain()` in `code/data_io.py`.

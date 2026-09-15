@@ -15,7 +15,7 @@ from data_io import REPORT_PATH, TABLE_DIR, ensure_output_dirs, load_tensor
 
 
 PHENOTYPE_DOC_TEMPLATE = (
-    "Row i = receiver; col j = sender. M[i,j]=1 → j elicited {phenotype} in i. Confirm bench direction."
+    "Row i = receiver; col j = sender. M[i,j]=1 → j elicited {phenotype} in i."
 )
 
 
@@ -61,9 +61,7 @@ Asymmetry stats below. mean_out vs mean_in tells dominant scored direction; larg
 
 {(__import__('report_utils').dataframe_to_md(df.drop(columns=['phenotype_scoring_rule']), index=False))}
 
-Outputs: directionality_summary.csv (author-fill phenotype_scoring_rule)
-
-Action: document bench direction per layer before submission.
+Outputs: directionality_summary.csv. The per-layer scoring rules are given in Supplementary Methods S2.
 """
     from report_utils import replace_section
     replace_section(REPORT_PATH, "<!-- directionality RESULTS -->", "Edge-direction convention", body)

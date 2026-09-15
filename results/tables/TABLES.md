@@ -23,6 +23,7 @@ selected values from them, and `verify_reported_values.py` checks those quotes.
 
 | File | Contents |
 |---|---|
+| `spatial_configuration.csv` | paired close/separated IG and CS: counts, densities, transitions, McNemar, exact binomial, dyad randomisation and bootstrap (Figure 6) |
 | `mixture_summary.csv` | mixture-model summary |
 | `mixture_model_selection.csv` | BIC / ICL / CV log-likelihood / silhouette for k = 1–8 × 3 covariance types |
 | `mixture_cluster_centroids.csv`, `mixture_cluster_membership.csv` | the k > 1 solutions, retained for inspection only |

@@ -1,23 +1,18 @@
 #!/usr/bin/env python3
-"""- Phylogenetic signal in interaction profiles. Tests h3.
+"""Phylogenetic signal in interaction profiles.
 
-The manuscript claims "weak but significant phylogenetic signal (Pagel's lambda
-= 0.31-0.48)". That number predates any code in this bundle. This script tests
-it against the delivered 16S data and reports whatever comes out.
+Tested three independent ways, so the verdict does not rest on one modelling
+choice:
 
-Because a negative result is only as good as its robustness, h3 is tested three
-independent ways rather than one:
-
-  1. Pagel's lambda by ML on the GTR+GAMMA tree (build_tree.py), LR test vs
-     lambda=0, BH-FDR across all traits.
-  2. The same on UPGMA and NJ trees built from the supplied pairwise 16S
-     distance matrix, so the verdict does not depend on one tree-building choice.
+  1. Pagel's lambda by maximum likelihood on the GTR+GAMMA tree (build_tree.py),
+     with significance from tip-label permutation and BH-FDR across traits.
+  2. The same on UPGMA and WPGMA trees built from the supplied pairwise 16S
+     distance matrix, so the result does not depend on one tree-building choice.
   3. A Mantel permutation test of 16S distance against interaction-profile
      distance, which uses no tree at all.
 
-It also reports how many distinct 16S genotypes the 60 strains actually resolve
-into, because that caps the power of every test above and is the mechanistic
-explanation for the result.
+It also reports how many distinct 16S genotypes the 60 strains resolve into,
+because that caps the power of every test above.
 """
 from __future__ import annotations
 
@@ -196,9 +191,9 @@ def lambda_table(
     """Pagel's lambda per trait, with a tip-label permutation test.
 
     The asymptotic chi2 LR test assumes a well-conditioned, roughly ultrametric
-    VCV. Neither holds here: 15 of the 59 strains share an identical 16S sequence,
-    so the ML tree's VCV has rank 44 of 59, and its tip depths span a 53-fold
-    range. Under those conditions shuffled trait values routinely produce
+    VCV. Neither holds here: 33 of the 60 strains share an identical 16S sequence
+    with at least one other, so the ML tree's VCV has rank 44 of 60, and its tip
+    depths span a 53-fold range. Under those conditions shuffled trait values routinely produce
     lambda > 0.9 and LR > 30, i.e. the chi2 p-value is anticonservative by orders
     of magnitude.
 

@@ -14,6 +14,7 @@ mapping to paper numbers is below.
 | Figure 3 | `figure_strategy_space` | `figure_strategy_space.py` |
 | Figure 4 | `figure_role_stability` | `figure_role_stability.py` |
 | Figure 5 | `figure_phylogeny` | `figures_phylogeny.py` |
+| Figure 6 | `figure_spatial_dependence` | `spatial_configuration.py` — paired close/separated IG and CS |
 
 ## Supplement
 
@@ -30,6 +31,8 @@ mapping to paper numbers is below.
 | Figure S9 | `figure_lambda_calibration` | `figures_phylogeny.py` |
 | Figure S10 | — | layer-specific Mantel panels, composed for the manuscript |
 | Figure S11 | `figure_metabolic_niche` | `figures_phylogeny.py` |
+| Figure S12 | `figure_spatial_matrices` | `spatial_configuration.py` |
+| Figure S13 | `figure_phenotype_gallery` | `figure_phenotype_gallery.py` — column headers on the plate montage `data/plates/phenotype_gallery.png` |
 
 ## Diagnostics, not used in the paper
 

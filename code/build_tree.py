@@ -7,12 +7,10 @@ Pip-only, no external binaries and no sudo, so the supplement stays standalone:
   trimAl (pytrimal)     trim ragged ends     -> data/phylogeny/16S_trimmed.fasta
   VeryFastTree          GTR+GAMMA ML tree    -> data/phylogeny/tree.nwk
 
-VeryFastTree is a validated reimplementation of FastTree 2 producing equivalent
-trees, used here because RAxML has no pip distribution. The tool names in the
-manuscript Methods must match what is actually run here.
+VeryFastTree is a validated reimplementation of FastTree 2 that produces
+equivalent trees and installs from PyPI.
 
-If a tree produced by the coauthor's own MAFFT + RAxML pipeline is dropped in at
-data/phylogeny/tree.nwk, this script leaves it alone (unless --force).
+An existing data/phylogeny/tree.nwk is left alone unless --force is given.
 """
 from __future__ import annotations
 
@@ -147,9 +145,7 @@ def main() -> None:
         f"trimming   : {trim_note}\n"
         f"inference  : {tree_note}\n"
         f"seed       : {SEED}\n\n"
-        "These are the tool names that must appear in the manuscript Methods.\n"
-        "If the coauthor supplies a MAFFT + RAxML tree, overwrite tree.nwk and\n"
-        "update this file; phylogenetic_signal.py consumes it unchanged.\n",
+        "phylogenetic_signal.py consumes tree.nwk unchanged.\n",
         encoding="utf-8",
     )
     print(f"wrote {TREE_OUT.relative_to(ROOT)}")

@@ -38,11 +38,12 @@ MARGIN = 1.01            # crop just outside the fitted rim
 PAIRS = [
     ("20250111_123839.jpg", "20250111_123846.jpg", "S524", "S1350"),
     ("20250111_123904.jpg", "20250111_123910.jpg", "S713'W", "S1350"),
-    ("20250111_123746.jpg", "20250111_123754.jpg", "MS3 11", "S1350"),
+    ("20250204_134945.jpg", "20250204_134949.jpg", "S1226", "S1502.2"),
 ]
 
-# where S1350 sits in the confronted pair, as a fraction of the cropped plate
-MARKS = [(0.635, 0.515), (0.607, 0.500), (0.600, 0.490)]
+# where the partner colony sits in the separated confrontation (S1350 in a and b,
+# S1502.2 in c), as a fraction of the cropped plate
+MARKS = [(0.635, 0.515), (0.607, 0.500), (0.575, 0.492)]
 
 
 def use_arial() -> str:
@@ -100,7 +101,7 @@ def main() -> None:
                     path_effects=_halo())
             if row == 0:
                 ax.set_title(f"{a_lab} × {b_lab}", fontsize=8, pad=3, color="black")
-                # one arrowhead on S1350 in the confronted pair
+                # one arrowhead on the partner colony in the separated confrontation
                 # short stub from directly below, so it clears the marker-pen
                 # labels written to the right of the colony
                 mx, my = MARKS[col]
